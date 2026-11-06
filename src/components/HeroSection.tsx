@@ -75,19 +75,19 @@ export const HeroSection: React.FC = () => {
   return (
     <section
       id="top"
-      className="relative w-full overflow-hidden bg-[#F8FAFC] dark:bg-[#050814] border-b border-slate-200/80 dark:border-slate-800/80 transition-colors"
+      className="relative w-full overflow-hidden bg-[#F5F4F0] dark:bg-[#0D0D0D] border-b border-[#DCDCDC] dark:border-[#333333] transition-colors"
     >
-      {/* Main Background: Exact shadcn.io Interactive Grid Pattern with Pointer Proximity & 24 Trail Cells */}
+      {/* Main Background: Figma Ink Wash Interactive Grid Pattern with Soft Ivory Spotlight & Silver-Gray Trail */}
       <InteractiveGridPattern
         cellSize={40}
         glowColor={
-          theme === 'dark' ? 'rgba(6, 182, 212, 0.28)' : 'rgba(59, 130, 246, 0.20)'
+          theme === 'dark' ? 'rgba(220, 220, 220, 0.22)' : 'rgba(77, 77, 77, 0.14)'
         }
         secondaryGlowColor={
-          theme === 'dark' ? 'rgba(59, 130, 246, 0.20)' : 'rgba(6, 182, 212, 0.14)'
+          theme === 'dark' ? 'rgba(184, 184, 184, 0.15)' : 'rgba(133, 133, 133, 0.10)'
         }
         lineColor={
-          theme === 'dark' ? 'rgba(56, 189, 248, 0.09)' : 'rgba(148, 163, 184, 0.20)'
+          theme === 'dark' ? 'rgba(184, 184, 184, 0.09)' : 'rgba(77, 77, 77, 0.12)'
         }
         proximity={135}
         fadeDuration={850}
@@ -103,23 +103,23 @@ export const HeroSection: React.FC = () => {
           transition={{ duration: 0.4, ease: 'easeOut' }}
           className="flex flex-wrap items-center justify-between gap-3 mb-8 sm:mb-10"
         >
-          <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-white dark:bg-[#0B1124] border border-slate-200/90 dark:border-slate-800/90 text-xs text-slate-600 dark:text-[#94A3B8]">
+          <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-[#EDECE8] dark:bg-[#252525] border border-[#DCDCDC] dark:border-[#333333] text-xs text-[#4D4D4D] dark:text-[#B8B8B8]">
             <span className="w-2 h-2 rounded-full bg-emerald-500" />
-            <span className="inline-flex items-center gap-1 font-medium text-slate-900 dark:text-[#F8FAFC]">
+            <span className="inline-flex items-center gap-1 font-medium text-[#0D0D0D] dark:text-[#F5F4F0]">
               <MapPin className="w-3.5 h-3.5 text-[#3B82F6] dark:text-[#06B6D4]" />
               {data.profile.location}
             </span>
-            <span aria-hidden="true" className="text-slate-300 dark:text-slate-700">
+            <span aria-hidden="true" className="text-[#B8B8B8] dark:text-[#4D4D4D]">
               |
             </span>
-            <span className="font-mono text-[11px] text-[#3B82F6] dark:text-[#06B6D4] font-medium">
+            <span className="font-mono text-[11px] text-[#252525] dark:text-[#EDECE8] font-medium">
               {data.profile.availabilityStatus}
             </span>
           </div>
 
-          <div className="hidden sm:flex items-center gap-2 font-mono text-[11px] text-slate-500 dark:text-[#94A3B8]">
-            <span>INTERACTIVE GRID</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#06B6D4]" />
+          <div className="hidden sm:flex items-center gap-2 font-mono text-[11px] text-[#858585] dark:text-[#B8B8B8]">
+            <span>INK WASH INTERACTIVE GRID</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#4D4D4D] dark:bg-[#EDECE8]" />
             <span>MOVE CURSOR TO ILLUMINATE CELLS</span>
           </div>
         </motion.div>
@@ -136,7 +136,7 @@ export const HeroSection: React.FC = () => {
             <div className="space-y-6">
               {/* Identity Header */}
               <div className="flex items-center gap-3.5">
-                <div className="relative w-14 h-14 rounded-lg overflow-hidden border border-slate-300 dark:border-slate-700/90 bg-white dark:bg-[#0B1124] shrink-0">
+                <div className="relative w-14 h-14 rounded-lg overflow-hidden border border-[#B8B8B8] dark:border-[#4D4D4D] bg-[#EDECE8] dark:bg-[#252525] shrink-0">
                   {data.profile.portraitUrl ? (
                     <img
                       src={data.profile.portraitUrl}
@@ -148,20 +148,20 @@ export const HeroSection: React.FC = () => {
                       }}
                     />
                   ) : null}
-                  <div className="w-full h-full flex items-center justify-center font-mono text-sm font-bold bg-[#101A30] text-[#06B6D4]">
+                  <div className="w-full h-full flex items-center justify-center font-mono text-sm font-bold bg-[#252525] text-[#EDECE8]">
                     ATS
                   </div>
                 </div>
 
                 <div className="min-w-0">
-                  <p className="font-mono text-xs font-semibold tracking-wider text-[#3B82F6] dark:text-[#06B6D4] uppercase">
+                  <p className="font-mono text-xs font-semibold tracking-wider text-[#4D4D4D] dark:text-[#B8B8B8] uppercase">
                     {data.profile.headline}
                   </p>
-                  <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-[#94A3B8] mt-1">
-                    <span className="font-mono text-slate-400 dark:text-slate-500">&gt;</span>
-                    <span className="font-mono font-semibold text-slate-900 dark:text-[#F8FAFC]">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm text-[#4D4D4D] dark:text-[#B8B8B8] mt-1">
+                    <span className="font-mono text-[#858585]">&gt;</span>
+                    <span className="font-mono font-semibold text-[#0D0D0D] dark:text-[#F5F4F0]">
                       {displayedRole}
-                      <span className="inline-block w-1.5 h-4 ml-1 align-middle bg-[#06B6D4]" />
+                      <span className="inline-block w-1.5 h-4 ml-1 align-middle bg-[#0D0D0D] dark:bg-[#EDECE8]" />
                     </span>
                   </div>
                 </div>
@@ -170,25 +170,25 @@ export const HeroSection: React.FC = () => {
               {/* Hero Display Headline & Description */}
               <div className="space-y-4">
                 <h1
-                  className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-[#F8FAFC] leading-[1.1]"
+                  className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-[#0D0D0D] dark:text-[#F5F4F0] leading-[1.1]"
                   style={{ textWrap: 'balance' }}
                 >
                   Hi, I'm{' '}
-                  <span className="text-[#3B82F6] dark:text-[#06B6D4]">
+                  <span className="text-[#252525] dark:text-[#EDECE8] underline decoration-[#B8B8B8]/50 dark:decoration-[#4D4D4D] underline-offset-8">
                     {data.profile.fullName}.
                   </span>
                 </h1>
 
-                <p className="text-sm sm:text-base text-slate-600 dark:text-[#94A3B8] leading-relaxed max-w-[58ch]">
+                <p className="text-sm sm:text-base text-[#4D4D4D] dark:text-[#B8B8B8] leading-relaxed max-w-[58ch]">
                   {data.profile.heroSubheadline}
                 </p>
               </div>
 
-              {/* Primary CTA Buttons (Sharp 8px radius, consistent padding) */}
+              {/* Primary CTA Buttons (Sharp 8px radius, #562f54 button color) */}
               <div className="flex flex-wrap items-center gap-3 pt-1">
                 <a
                   href="#projects"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white bg-[#3B82F6] hover:bg-blue-500 active:scale-[0.99] rounded-lg transition-all whitespace-nowrap shrink-0"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-semibold bg-[#562f54] text-white hover:bg-[#6b3b68] border border-[#562f54] active:scale-[0.99] rounded-lg transition-all whitespace-nowrap shrink-0"
                 >
                   <span>View Projects</span>
                   <ArrowRight className="w-4 h-4" />
@@ -197,29 +197,29 @@ export const HeroSection: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setResumeModalOpen(true)}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-semibold text-slate-800 dark:text-[#F8FAFC] bg-white dark:bg-[#0B1124] hover:bg-slate-100 dark:hover:bg-[#101A30] border border-slate-200/90 dark:border-slate-800 rounded-lg transition-colors whitespace-nowrap shrink-0"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white bg-[#562f54] hover:bg-[#6b3b68] border border-[#562f54] rounded-lg transition-colors whitespace-nowrap shrink-0"
                 >
-                  <Download className="w-4 h-4 text-[#3B82F6] dark:text-[#06B6D4]" />
+                  <Download className="w-4 h-4 text-white" />
                   <span>Download Resume</span>
                 </button>
 
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center px-4 py-2.5 text-xs sm:text-sm font-medium text-slate-700 dark:text-[#94A3B8] hover:text-[#3B82F6] dark:hover:text-[#06B6D4] border border-transparent hover:border-slate-200 dark:hover:border-slate-800 rounded-lg transition-colors whitespace-nowrap shrink-0"
+                  className="inline-flex items-center justify-center px-4 py-2.5 text-xs sm:text-sm font-semibold text-white bg-[#562f54] hover:bg-[#6b3b68] border border-[#562f54] rounded-lg transition-colors whitespace-nowrap shrink-0"
                 >
                   Contact Me
                 </a>
               </div>
 
               {/* Verified GitHub, LinkedIn & Email Bar */}
-              <div className="pt-4 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">
+              <div className="pt-4 border-t border-[#DCDCDC] dark:border-[#333333] flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">
                 <a
                   href={data.profile.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 font-medium text-slate-700 dark:text-slate-200 hover:text-[#3B82F6] dark:hover:text-[#06B6D4] transition-colors"
+                  className="inline-flex items-center gap-1.5 font-medium text-[#252525] dark:text-[#DCDCDC] hover:text-[#0D0D0D] dark:hover:text-[#F5F4F0] transition-colors"
                 >
-                  <Github className="w-4 h-4 text-[#3B82F6] dark:text-[#06B6D4]" />
+                  <Github className="w-4 h-4 text-[#4D4D4D] dark:text-[#B8B8B8]" />
                   <span>github.com/ambatitharunsai-tech</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-75" />
                 </a>
@@ -229,9 +229,9 @@ export const HeroSection: React.FC = () => {
                     href={data.profile.linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 font-medium text-slate-700 dark:text-slate-200 hover:text-[#3B82F6] dark:hover:text-[#06B6D4] transition-colors"
+                    className="inline-flex items-center gap-1.5 font-medium text-[#252525] dark:text-[#DCDCDC] hover:text-[#0D0D0D] dark:hover:text-[#F5F4F0] transition-colors"
                   >
-                    <Linkedin className="w-4 h-4 text-[#8B5CF6]" />
+                    <Linkedin className="w-4 h-4 text-[#4D4D4D] dark:text-[#B8B8B8]" />
                     <span>LinkedIn</span>
                     <ArrowUpRight className="w-3.5 h-3.5 opacity-75" />
                   </a>
@@ -240,9 +240,9 @@ export const HeroSection: React.FC = () => {
                 {data.profile.email && (
                   <a
                     href={`mailto:${data.profile.email}`}
-                    className="inline-flex items-center gap-1.5 font-medium text-slate-700 dark:text-slate-200 hover:text-[#3B82F6] dark:hover:text-[#06B6D4] transition-colors"
+                    className="inline-flex items-center gap-1.5 font-medium text-[#252525] dark:text-[#DCDCDC] hover:text-[#0D0D0D] dark:hover:text-[#F5F4F0] transition-colors"
                   >
-                    <Mail className="w-4 h-4 text-[#3B82F6] dark:text-[#06B6D4]" />
+                    <Mail className="w-4 h-4 text-[#4D4D4D] dark:text-[#B8B8B8]" />
                     <span>{data.profile.email}</span>
                   </a>
                 )}
@@ -277,14 +277,14 @@ export const HeroSection: React.FC = () => {
                 return (
                   <div
                     key={pillar.label}
-                    className="p-3.5 rounded-lg bg-white dark:bg-[#0B1124] border border-slate-200/90 dark:border-slate-800/90 hover:border-[#3B82F6]/50 dark:hover:border-[#06B6D4]/50 transition-colors flex flex-col justify-between"
+                    className="p-3.5 rounded-lg bg-[#EDECE8] dark:bg-[#252525] border border-[#DCDCDC] dark:border-[#333333] hover:border-[#858585] dark:hover:border-[#858585] transition-colors flex flex-col justify-between"
                   >
-                    <Icon className="w-4 h-4 text-[#3B82F6] dark:text-[#06B6D4] mb-2" />
+                    <Icon className="w-4 h-4 text-[#252525] dark:text-[#EDECE8] mb-2" />
                     <div>
-                      <p className="font-display text-xs font-bold text-slate-900 dark:text-[#F8FAFC]">
+                      <p className="font-display text-xs font-bold text-[#0D0D0D] dark:text-[#F5F4F0]">
                         {pillar.label}
                       </p>
-                      <p className="font-mono text-[11px] text-slate-500 dark:text-[#94A3B8] mt-0.5 truncate">
+                      <p className="font-mono text-[11px] text-[#4D4D4D] dark:text-[#B8B8B8] mt-0.5 truncate">
                         {pillar.sub}
                       </p>
                     </div>
@@ -302,12 +302,12 @@ export const HeroSection: React.FC = () => {
             className="lg:col-span-6 flex flex-col"
           >
             {activeProject && (
-              <div className="flex-1 rounded-xl bg-white dark:bg-[#0B1124] border border-slate-200/90 dark:border-slate-800/90 hover:border-[#3B82F6]/40 dark:hover:border-[#06B6D4]/40 transition-colors overflow-hidden flex flex-col justify-between">
+              <div className="flex-1 rounded-xl bg-[#EDECE8] dark:bg-[#252525] border border-[#DCDCDC] dark:border-[#333333] hover:border-[#858585] dark:hover:border-[#4D4D4D] transition-colors overflow-hidden flex flex-col justify-between">
                 <div>
                   {/* Widget Top Header */}
-                  <div className="px-5 py-3 border-b border-slate-200/80 dark:border-slate-800/80 flex items-center justify-between gap-3 bg-slate-50 dark:bg-[#101A30]/70">
-                    <div className="flex items-center gap-2 font-mono text-xs font-semibold text-[#3B82F6] dark:text-[#06B6D4]">
-                      <Cpu className="w-4 h-4" />
+                  <div className="px-5 py-3 border-b border-[#DCDCDC] dark:border-[#333333] flex items-center justify-between gap-3 bg-[#F5F4F0] dark:bg-[#0D0D0D]/60">
+                    <div className="flex items-center gap-2 font-mono text-xs font-semibold text-[#252525] dark:text-[#EDECE8]">
+                      <Cpu className="w-4 h-4 text-[#4D4D4D] dark:text-[#B8B8B8]" />
                       <span>
                         PROJECT PREVIEW // 0{activeProjectIndex + 1} OF 0{projects.length}
                       </span>
@@ -318,7 +318,7 @@ export const HeroSection: React.FC = () => {
                         type="button"
                         onClick={() => cycleProject(-1)}
                         aria-label="Previous project"
-                        className="p-1.5 rounded-md bg-white dark:bg-[#0B1124] border border-slate-200 dark:border-slate-700/80 text-slate-600 dark:text-slate-300 hover:border-[#3B82F6] dark:hover:border-[#06B6D4] transition-colors"
+                        className="p-1.5 rounded-md bg-[#EDECE8] dark:bg-[#252525] border border-[#DCDCDC] dark:border-[#333333] text-[#252525] dark:text-[#DCDCDC] hover:border-[#858585] dark:hover:border-[#858585] transition-colors"
                       >
                         <ArrowLeft className="w-3.5 h-3.5" />
                       </button>
@@ -326,7 +326,7 @@ export const HeroSection: React.FC = () => {
                         type="button"
                         onClick={() => cycleProject(1)}
                         aria-label="Next project"
-                        className="p-1.5 rounded-md bg-white dark:bg-[#0B1124] border border-slate-200 dark:border-slate-700/80 text-slate-600 dark:text-slate-300 hover:border-[#3B82F6] dark:hover:border-[#06B6D4] transition-colors"
+                        className="p-1.5 rounded-md bg-[#EDECE8] dark:bg-[#252525] border border-[#DCDCDC] dark:border-[#333333] text-[#252525] dark:text-[#DCDCDC] hover:border-[#858585] dark:hover:border-[#858585] transition-colors"
                       >
                         <ArrowRight className="w-3.5 h-3.5" />
                       </button>
@@ -334,7 +334,7 @@ export const HeroSection: React.FC = () => {
                   </div>
 
                   {/* Selector Tabs */}
-                  <div className="px-5 py-2 border-b border-slate-200/80 dark:border-slate-800/80 flex items-center gap-1.5 overflow-x-auto no-scrollbar bg-slate-100/60 dark:bg-[#050814]/60">
+                  <div className="px-5 py-2 border-b border-[#DCDCDC] dark:border-[#333333] flex items-center gap-1.5 overflow-x-auto no-scrollbar bg-[#F5F4F0]/80 dark:bg-[#0D0D0D]/80">
                     {projects.slice(0, 5).map((proj, idx) => {
                       const isSelected = idx === activeProjectIndex;
                       return (
@@ -344,8 +344,8 @@ export const HeroSection: React.FC = () => {
                           onClick={() => setActiveProjectIndex(idx)}
                           className={`px-2.5 py-1 rounded-md font-mono text-[11px] transition-colors whitespace-nowrap shrink-0 border ${
                             isSelected
-                              ? 'bg-[#3B82F6] text-white border-[#3B82F6] font-semibold'
-                              : 'bg-transparent border-transparent text-slate-600 dark:text-[#94A3B8] hover:text-slate-900 dark:hover:text-[#F8FAFC] hover:bg-slate-200/60 dark:hover:bg-[#101A30]'
+                              ? 'bg-[#562f54] text-white border-[#562f54] font-semibold'
+                              : 'bg-transparent border-transparent text-[#4D4D4D] dark:text-[#B8B8B8] hover:text-[#0D0D0D] dark:hover:text-[#F5F4F0] hover:bg-[#DCDCDC] dark:hover:bg-[#333333]'
                           }`}
                         >
                           0{idx + 1}. {proj.title}
@@ -355,16 +355,16 @@ export const HeroSection: React.FC = () => {
                   </div>
 
                   {/* Consistent 16:9 / Fixed-Height Visual Preview Area */}
-                  <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-[#050814] border-b border-slate-200/80 dark:border-slate-800/80">
+                  <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-[#0D0D0D] border-b border-[#DCDCDC] dark:border-[#333333]">
                     {activeProject.previewImage ? (
                       <img
                         src={activeProject.previewImage}
                         alt={activeProject.title}
-                        className="w-full h-full object-cover opacity-90"
+                        className="w-full h-full object-cover opacity-95"
                       />
                     ) : (
-                      <div className="w-full h-full flex flex-col justify-between p-5 bg-[#050814] text-[#F8FAFC]">
-                        <div className="flex items-center justify-between font-mono text-[11px] text-[#06B6D4]">
+                      <div className="w-full h-full flex flex-col justify-between p-5 bg-[#0D0D0D] text-[#EDECE8]">
+                        <div className="flex items-center justify-between font-mono text-[11px] text-[#B8B8B8]">
                           <span>SYSTEM ARCHITECTURE</span>
                           <span>{activeProject.category}</span>
                         </div>
@@ -372,9 +372,9 @@ export const HeroSection: React.FC = () => {
                           {activeProject.features.slice(0, 3).map((feat: string, i: number) => (
                             <div
                               key={i}
-                              className="p-2.5 rounded-lg bg-[#0B1124] border border-slate-800 text-[11px] font-mono text-slate-200 leading-snug"
+                              className="p-2.5 rounded-lg bg-[#252525] border border-[#333333] text-[11px] font-mono text-[#DCDCDC] leading-snug"
                             >
-                              <span className="block text-[#06B6D4] font-bold mb-1">
+                              <span className="block text-[#EDECE8] font-bold mb-1">
                                 MODULE 0{i + 1}
                               </span>
                               <span className="line-clamp-2">{feat}</span>
@@ -386,11 +386,14 @@ export const HeroSection: React.FC = () => {
 
                     {/* Crisp Status Badges */}
                     <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 pointer-events-none">
-                      <span className="px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold bg-[#050814]/90 text-[#06B6D4] border border-slate-800">
+                      <span className="px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold bg-[#0D0D0D]/90 text-[#EDECE8] border border-[#333333]">
                         {activeProject.category}
                       </span>
-                      <span className="px-2.5 py-1 rounded-md text-[11px] font-mono font-medium bg-[#050814]/90 text-emerald-400 border border-slate-800">
-                        {activeProject.status}
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-mono font-medium bg-[#0D0D0D]/90 text-emerald-400 border border-[#4D4D4D]">
+                        {activeProject.liveUrl && (
+                          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                        )}
+                        <span>{activeProject.status}</span>
                       </span>
                     </div>
                   </div>
@@ -398,22 +401,30 @@ export const HeroSection: React.FC = () => {
                   {/* Project Details Body */}
                   <div className="p-5 space-y-4">
                     <div>
-                      <h2 className="font-display text-lg sm:text-xl font-bold text-slate-900 dark:text-[#F8FAFC]">
-                        {activeProject.title}
-                      </h2>
-                      <p className="text-xs sm:text-sm text-slate-600 dark:text-[#94A3B8] mt-1 leading-relaxed line-clamp-2">
+                      <div className="flex items-center justify-between gap-2">
+                        <h2 className="font-display text-lg sm:text-xl font-bold text-[#0D0D0D] dark:text-[#F5F4F0]">
+                          {activeProject.title}
+                        </h2>
+                        {activeProject.liveUrl && (
+                          <span className="inline-flex items-center gap-1.5 text-[11px] font-mono font-medium text-emerald-600 dark:text-emerald-400">
+                            <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                            <span>Live</span>
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs sm:text-sm text-[#4D4D4D] dark:text-[#B8B8B8] mt-1 leading-relaxed line-clamp-2">
                         {activeProject.description}
                       </p>
                     </div>
 
                     {/* Key Capabilities Grid */}
-                    <div className="p-3.5 rounded-lg bg-slate-50 dark:bg-[#101A30]/60 border border-slate-200/80 dark:border-slate-800/80 space-y-2">
+                    <div className="p-3.5 rounded-lg bg-[#F5F4F0] dark:bg-[#0D0D0D]/60 border border-[#DCDCDC] dark:border-[#333333] space-y-2">
                       <div className="flex items-center justify-between gap-2">
-                        <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-slate-500 dark:text-[#94A3B8]">
+                        <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#858585] dark:text-[#B8B8B8]">
                           Core Capabilities
                         </p>
                         {activeProject.highlightMetric && (
-                          <span className="font-mono text-[11px] text-[#3B82F6] dark:text-[#06B6D4] font-medium">
+                          <span className="font-mono text-[11px] text-[#252525] dark:text-[#EDECE8] font-medium">
                             {activeProject.highlightMetric}
                           </span>
                         )}
@@ -422,9 +433,9 @@ export const HeroSection: React.FC = () => {
                         {activeProject.features.slice(0, 4).map((feat: string, idx: number) => (
                           <div
                             key={idx}
-                            className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-200"
+                            className="flex items-start gap-2 text-xs text-[#252525] dark:text-[#DCDCDC]"
                           >
-                            <span className="font-mono text-[11px] font-bold text-[#3B82F6] dark:text-[#06B6D4] shrink-0">
+                            <span className="font-mono text-[11px] font-bold text-[#4D4D4D] dark:text-[#B8B8B8] shrink-0">
                               0{idx + 1}.
                             </span>
                             <span className="line-clamp-1">{feat}</span>
@@ -436,49 +447,49 @@ export const HeroSection: React.FC = () => {
                 </div>
 
                 {/* Widget Footer */}
-                <div className="px-5 py-3.5 border-t border-slate-200/80 dark:border-slate-800/80 bg-slate-50/60 dark:bg-[#050814]/50 flex flex-wrap items-center justify-between gap-3">
+                <div className="px-5 py-3.5 border-t border-[#DCDCDC] dark:border-[#333333] bg-[#F5F4F0]/70 dark:bg-[#0D0D0D]/50 flex flex-wrap items-center justify-between gap-3">
                   <div className="flex flex-wrap items-center gap-1.5">
                     {activeProject.technologies.slice(0, 4).map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-0.5 rounded text-[11px] font-mono bg-white dark:bg-[#101A30] border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300"
+                        className="px-2 py-0.5 rounded text-[11px] font-mono bg-[#EDECE8] dark:bg-[#333333] border border-[#DCDCDC] dark:border-[#4D4D4D] text-[#252525] dark:text-[#DCDCDC]"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex items-center gap-3 text-xs">
-                    {activeProject.liveUrl && (
-                      <a
-                        href={activeProject.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 font-semibold text-emerald-600 dark:text-emerald-400 hover:underline"
-                      >
-                        <ExternalLink className="w-3.5 h-3.5" />
-                        <span>Live Demo</span>
-                      </a>
-                    )}
-
+                  <div className="flex items-center gap-2 text-xs">
                     {activeProject.githubUrl && (
                       <a
                         href={activeProject.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 font-medium text-slate-700 dark:text-slate-300 hover:text-[#3B82F6] dark:hover:text-[#06B6D4]"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#562f54] border border-[#562f54] font-semibold text-white hover:bg-[#6b3b68] transition-colors"
                       >
                         <Github className="w-3.5 h-3.5" />
                         <span>GitHub</span>
                       </a>
                     )}
 
+                    {activeProject.liveUrl && (
+                      <a
+                        href={activeProject.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#562f54] text-white hover:bg-[#6b3b68] font-semibold transition-colors"
+                      >
+                        <span>Live Demo</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+
                     <button
                       type="button"
                       onClick={() => setSelectedProjectId(activeProject.id)}
-                      className="inline-flex items-center gap-1 font-semibold text-[#3B82F6] dark:text-[#06B6D4] hover:underline"
+                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-[#562f54] text-white hover:bg-[#6b3b68] font-semibold transition-colors"
                     >
-                      <span>Inspect</span>
+                      <span>Details</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </button>
                   </div>

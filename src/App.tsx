@@ -66,17 +66,20 @@ const PortfolioShell: React.FC = () => {
 
   if (notFoundRoute) {
     return (
-      <div className="min-h-screen flex flex-col bg-[#F8FAFC] dark:bg-[#050814] text-slate-900 dark:text-[#F8FAFC]">
+      <div className="min-h-screen flex flex-col bg-[#F5F4F0] dark:bg-[#0D0D0D] text-[#0D0D0D] dark:text-[#EDECE8]">
         <Navbar />
         <main className="flex-1 flex items-center justify-center p-6">
-          <div className="max-w-md w-full p-8 rounded-xl bg-white dark:bg-[#0B1124] border border-slate-200/80 dark:border-slate-800/80 text-center space-y-4">
-            <p className="font-mono text-xs font-semibold text-[#3B82F6] dark:text-[#06B6D4]">
+          <div className="max-w-md w-full p-8 rounded-xl bg-[#EDECE8] dark:bg-[#252525] border border-[#DCDCDC] dark:border-[#333333] text-center space-y-4">
+            <p className="font-mono text-xs font-semibold text-[#4D4D4D] dark:text-[#B8B8B8]">
               ERROR 404 · ROUTE NOT FOUND
             </p>
-            <h1 className="font-display text-2xl font-bold">Page Not Found</h1>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-[#94A3B8] leading-relaxed">
-              The route <code className="font-mono text-[#3B82F6]">{notFoundRoute}</code> does not
-              exist on Ambati Tharun Sai's portfolio.
+            <h1 className="font-display text-2xl font-bold text-[#0D0D0D] dark:text-[#F5F4F0]">
+              Page Not Found
+            </h1>
+            <p className="text-xs sm:text-sm text-[#4D4D4D] dark:text-[#B8B8B8] leading-relaxed">
+              The route{' '}
+              <code className="font-mono text-[#0D0D0D] dark:text-[#EDECE8]">{notFoundRoute}</code>{' '}
+              does not exist on Ambati Tharun Sai's portfolio.
             </p>
             <button
               type="button"
@@ -84,7 +87,7 @@ const PortfolioShell: React.FC = () => {
                 window.location.hash = '#top';
                 setNotFoundRoute(null);
               }}
-              className="inline-flex items-center justify-center px-4 py-2.5 text-xs font-semibold rounded-lg bg-[#3B82F6] hover:bg-blue-500 text-white transition-colors"
+              className="inline-flex items-center justify-center px-4 py-2.5 text-xs font-semibold rounded-lg bg-[#562f54] text-[#F5F4F0] hover:bg-[#6b3b68] transition-colors"
             >
               Return to Portfolio Home
             </button>
@@ -95,7 +98,7 @@ const PortfolioShell: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F8FAFC] dark:bg-[#050814] text-slate-900 dark:text-[#F8FAFC] transition-colors">
+    <div className="min-h-screen flex flex-col bg-[#F5F4F0] dark:bg-[#0D0D0D] text-[#0D0D0D] dark:text-[#EDECE8] transition-colors">
       <Navbar />
       <main className="flex-1">
         <HeroSection />

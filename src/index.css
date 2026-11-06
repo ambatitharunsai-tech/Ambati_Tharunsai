@@ -7,24 +7,42 @@
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
 
-    --bg-base: #F8FAFC;
-    --bg-surface: #FFFFFF;
-    --bg-elevated: #F1F5F9;
-    --text-primary: #0F172A;
-    --text-secondary: #475569;
-    --border-subtle: rgba(148, 163, 184, 0.28);
-    --accent-blue: #3B82F6;
-    --accent-cyan: #06B6D4;
-    --accent-violet: #8B5CF6;
+    /* Figma Ink Wash Monochromatic Palette Tokens */
+    --ink-concentrated: #0D0D0D;
+    --ink-charcoal: #252525;
+    --ink-surface: #333333;
+    --ink-medium-gray: #4D4D4D;
+    --ink-muted-gray: #858585;
+    --ink-silver: #B8B8B8;
+    --ink-mist-gray: #DCDCDC;
+    --ink-warm-ivory: #EDECE8;
+    --ink-paper-white: #F5F4F0;
+
+    /* Light Mode Surface Mapping (Paper White & Warm Ivory) */
+    --bg-base: #F5F4F0;
+    --bg-surface: #EDECE8;
+    --bg-elevated: #DCDCDC;
+    --text-primary: #0D0D0D;
+    --text-secondary: #4D4D4D;
+    --text-muted: #858585;
+    --border-subtle: #DCDCDC;
+    --border-strong: #B8B8B8;
+    --accent-primary: #252525;
+    --accent-highlight: #0D0D0D;
   }
 
   .dark {
-    --bg-base: #050814;
-    --bg-surface: #0B1124;
-    --bg-elevated: #101A30;
-    --text-primary: #F8FAFC;
-    --text-secondary: #94A3B8;
-    --border-subtle: rgba(148, 163, 184, 0.18);
+    /* Dark Mode Surface Mapping (Concentrated Ink, Rich Charcoal & Dark Surface) */
+    --bg-base: #0D0D0D;
+    --bg-surface: #252525;
+    --bg-elevated: #333333;
+    --text-primary: #EDECE8;
+    --text-secondary: #B8B8B8;
+    --text-muted: #858585;
+    --border-subtle: #333333;
+    --border-strong: #4D4D4D;
+    --accent-primary: #EDECE8;
+    --accent-highlight: #F5F4F0;
   }
 
   html {
@@ -37,6 +55,13 @@
 
   body {
     overflow-x: hidden;
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+  }
+
+  ::selection {
+    background-color: #EDECE8;
+    color: #0D0D0D;
   }
 
   h1, h2, h3, h4, .font-display {

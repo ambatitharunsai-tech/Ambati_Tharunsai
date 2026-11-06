@@ -39,9 +39,15 @@ interface PortfolioContextValue {
   refreshGitHub: () => Promise<void>;
 }
 
-const STORAGE_KEY = 'ambati_tharun_sai_portfolio_v3';
+const STORAGE_KEY = 'ambati_tharun_sai_portfolio_v4';
 const GITHUB_CACHE_KEY = 'ambati_tharun_sai_github_cache_v2';
 const THEME_KEY = 'ambati_tharun_sai_theme_v1';
+
+const VERIFIED_LIVE_URLS: Record<string, string> = {
+  'edunexus-ai': 'https://edunexus-ai-web.onrender.com/',
+  'safe-drinking-water-web': 'https://safe-water-web.onrender.com/',
+  curricuforge: 'https://coursecraft-e1jx.onrender.com/',
+};
 
 const PortfolioContext = createContext<PortfolioContextValue | null>(null);
 
@@ -63,13 +69,18 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         }
         const hydratedProjects: ProjectItem[] = Array.isArray(parsed.projects)
           ? parsed.projects.map((p: ProjectItem) => {
+              const updated = { ...p };
               if (
-                (!p.previewImage || p.previewImage.startsWith('/src/assets/')) &&
-                BUNDLED_PROJECT_IMAGES[p.id]
+                (!updated.previewImage || updated.previewImage.startsWith('/src/assets/')) &&
+                BUNDLED_PROJECT_IMAGES[updated.id]
               ) {
-                return { ...p, previewImage: BUNDLED_PROJECT_IMAGES[p.id] };
+                updated.previewImage = BUNDLED_PROJECT_IMAGES[updated.id];
               }
-              return p;
+              if (VERIFIED_LIVE_URLS[updated.id] && !updated.liveUrl) {
+                updated.liveUrl = VERIFIED_LIVE_URLS[updated.id];
+                updated.status = 'Live Production';
+              }
+              return updated;
             })
           : DEFAULT_PORTFOLIO_DATA.projects;
 

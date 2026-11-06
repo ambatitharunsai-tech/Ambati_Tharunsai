@@ -3,13 +3,13 @@ import React, { useEffect, useRef } from 'react';
 export interface InteractiveGridPatternProps {
   /** Size of each square cell in pixels (default: 40) */
   cellSize?: number;
-  /** Primary glow color for active & trail cells (default: rgba(6, 182, 212, 0.28)) */
+  /** Primary glow color for active & hover cells (Ink Wash muted light gray / warm ivory) */
   glowColor?: string;
-  /** Secondary electric-blue accent glow color (default: rgba(59, 130, 246, 0.22)) */
+  /** Secondary trail glow color (Ink Wash silver-gray) */
   secondaryGlowColor?: string;
-  /** 1px grid line color (default adapts or uses rgba(56, 189, 248, 0.11)) */
+  /** 1px grid line color (subtle charcoal & silver) */
   lineColor?: string;
-  /** Radius in pixels around pointer that illuminates nearby cells (default: 130) */
+  /** Radius in pixels around pointer that illuminates nearby cells (default: 135) */
   proximity?: number;
   /** Fade out duration in ms for the 24 reusable trail cells (default: 850) */
   fadeDuration?: number;
@@ -32,23 +32,21 @@ const NEIGHBOR_OFFSETS: ReadonlyArray<readonly [number, number]> = [
 ];
 
 /**
- * InteractiveGridPattern
+ * InteractiveGridPattern — Figma Ink Wash Monochromatic Edition
  * Faithful recreation of https://www.shadcn.io/view/ui/interactive-grid-pattern/default
  *
- * Features:
- * - Fine, evenly spaced CSS-based 1px grid lines.
- * - Pointer-proximity cell illumination around the cursor (3x3 neighborhood weighted by distance).
- * - 24 reusable DOM trail cells that light up as the cursor moves across cells and gradually fade out.
- * - Subtle pointer-following radial spotlight.
- * - Zero continuous animation loops when the pointer is stationary.
- * - Never blocks buttons, links, text, or navigation (`pointer-events-none`).
- * - Supports touch devices and respects `prefers-reduced-motion`.
+ * Palette:
+ * - Background: #0D0D0D (Dark) / #F5F4F0 (Light)
+ * - Grid lines: subtle charcoal (#333333) and silver (#B8B8B8)
+ * - Pointer glow: soft Warm Ivory (#EDECE8)
+ * - Interactive trail: Silver-Gray (#B8B8B8)
+ * - Hover cells: Muted Light Gray (#DCDCDC)
  */
 export const InteractiveGridPattern: React.FC<InteractiveGridPatternProps> = ({
   cellSize = 40,
-  glowColor = 'rgba(6, 182, 212, 0.30)',
-  secondaryGlowColor = 'rgba(59, 130, 246, 0.22)',
-  lineColor = 'rgba(56, 189, 248, 0.10)',
+  glowColor = 'rgba(220, 220, 220, 0.20)',
+  secondaryGlowColor = 'rgba(184, 184, 184, 0.14)',
+  lineColor = 'rgba(184, 184, 184, 0.08)',
   proximity = 135,
   fadeDuration = 850,
   trailCount = 24,
@@ -103,12 +101,12 @@ export const InteractiveGridPattern: React.FC<InteractiveGridPatternProps> = ({
       const x = col * cellSize;
       const y = row * cellSize;
 
-      // Snap immediately to new cell with full glow, then smoothly decay
+      // Snap immediately to new cell with silver-gray / ivory trail glow, then smoothly decay
       trailEl.style.transition = 'none';
       trailEl.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-      trailEl.style.backgroundColor = idx % 2 === 0 ? glowColor : secondaryGlowColor;
-      trailEl.style.borderColor = 'rgba(6, 182, 212, 0.45)';
-      trailEl.style.opacity = '0.9';
+      trailEl.style.backgroundColor = idx % 2 === 0 ? secondaryGlowColor : glowColor;
+      trailEl.style.borderColor = 'rgba(184, 184, 184, 0.35)';
+      trailEl.style.opacity = '0.88';
 
       // Force style flush so the subsequent fade transition interpolates smoothly
       void trailEl.offsetWidth;
@@ -134,18 +132,18 @@ export const InteractiveGridPattern: React.FC<InteractiveGridPatternProps> = ({
         return;
       }
 
-      // 1. Update subtle pointer-following radial spotlight
+      // 1. Update subtle pointer-following radial spotlight (Soft Warm Ivory #EDECE8 & Silver #B8B8B8)
       if (spotlightRef.current) {
         spotlightRef.current.style.opacity = '1';
         spotlightRef.current.style.background = `radial-gradient(${
           proximity * 2.4
-        }px circle at ${relX}px ${relY}px, rgba(6, 182, 212, 0.14), rgba(59, 130, 246, 0.07) 45%, transparent 78%)`;
+        }px circle at ${relX}px ${relY}px, rgba(237, 236, 232, 0.13), rgba(184, 184, 184, 0.06) 45%, transparent 78%)`;
       }
 
       const baseCol = Math.floor(relX / cellSize);
       const baseRow = Math.floor(relY / cellSize);
 
-      // 2. Update proximity-based 3x3 cells around the cursor
+      // 2. Update proximity-based 3x3 cells around the cursor (Muted Light Gray #DCDCDC & Silver #B8B8B8)
       for (let i = 0; i < NEIGHBOR_OFFSETS.length; i++) {
         const el = proximityCellsRef.current[i];
         if (!el) continue;
@@ -228,7 +226,7 @@ export const InteractiveGridPattern: React.FC<InteractiveGridPatternProps> = ({
       aria-hidden="true"
       className={`pointer-events-none select-none absolute inset-0 overflow-hidden ${className}`}
     >
-      {/* 1. Base Crisp Evenly-Spaced CSS Grid Lines */}
+      {/* 1. Base Crisp Evenly-Spaced CSS Grid Lines (Charcoal & Silver) */}
       <div
         className="absolute inset-0"
         style={{
@@ -237,13 +235,13 @@ export const InteractiveGridPattern: React.FC<InteractiveGridPatternProps> = ({
         }}
       />
 
-      {/* 2. Subtle Pointer-Following Spotlight */}
+      {/* 2. Subtle Pointer-Following Soft Ivory Spotlight */}
       <div
         ref={spotlightRef}
         className="absolute inset-0 opacity-0 transition-opacity duration-300"
       />
 
-      {/* 3. 24 Reusable Trail Cells Pool */}
+      {/* 3. 24 Reusable Silver-Gray Trail Cells Pool */}
       {Array.from({ length: trailCount }).map((_, idx) => (
         <div
           key={`trail-${idx}`}
@@ -259,7 +257,7 @@ export const InteractiveGridPattern: React.FC<InteractiveGridPatternProps> = ({
         />
       ))}
 
-      {/* 4. Proximity-Highlighted Cursor Neighborhood Cells */}
+      {/* 4. Proximity-Highlighted Muted Light Gray Cursor Neighborhood Cells */}
       {NEIGHBOR_OFFSETS.map((_, idx) => (
         <div
           key={`prox-${idx}`}
@@ -272,21 +270,21 @@ export const InteractiveGridPattern: React.FC<InteractiveGridPatternProps> = ({
             opacity: 0,
             backgroundColor: idx === 0 ? glowColor : secondaryGlowColor,
             borderColor:
-              idx === 0 ? 'rgba(6, 182, 212, 0.55)' : 'rgba(59, 130, 246, 0.30)',
+              idx === 0 ? 'rgba(237, 236, 232, 0.42)' : 'rgba(184, 184, 184, 0.25)',
           }}
           className="absolute top-0 left-0 border transition-opacity duration-150 ease-out will-change-[transform,opacity]"
         />
       ))}
 
-      {/* 5. Edge Vignette Mask so grid blends seamlessly into #050814 / #F8FAFC */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,#F8FAFC_100%)] dark:bg-[radial-gradient(circle_at_center,transparent_45%,#050814_100%)] opacity-80" />
+      {/* 5. Edge Vignette Mask so grid blends seamlessly into #0D0D0D (Dark) / #F5F4F0 (Light) */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,#F5F4F0_100%)] dark:bg-[radial-gradient(circle_at_center,transparent_45%,#0D0D0D_100%)] opacity-80" />
     </div>
   );
 };
 
 /**
  * SubtleSectionGrid
- * Lightweight, non-noisy static grid backdrop to keep non-Hero sections visually cohesive.
+ * Lightweight, non-noisy static Ink Wash grid backdrop to keep non-Hero sections visually cohesive.
  */
 export const SubtleSectionGrid: React.FC<{ cellSize?: number; className?: string }> = ({
   cellSize = 40,
@@ -298,7 +296,7 @@ export const SubtleSectionGrid: React.FC<{ cellSize?: number; className?: string
       className={`pointer-events-none select-none absolute inset-0 overflow-hidden opacity-45 dark:opacity-35 ${className}`}
       style={{
         backgroundImage:
-          'linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px)',
+          'linear-gradient(to right, rgba(184, 184, 184, 0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(184, 184, 184, 0.07) 1px, transparent 1px)',
         backgroundSize: `${cellSize}px ${cellSize}px`,
       }}
     />

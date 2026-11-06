@@ -19,6 +19,12 @@ type StudioTab =
   | 'achievements'
   | 'json';
 
+const INPUT_CLASS =
+  'w-full px-3 py-2 rounded-lg bg-[#F5F4F0] dark:bg-[#0D0D0D] border border-[#DCDCDC] dark:border-[#333333] text-[#0D0D0D] dark:text-[#EDECE8] placeholder:text-[#858585] focus:outline-none focus:border-[#4D4D4D] dark:focus:border-[#B8B8B8]';
+
+const PRIMARY_BTN_CLASS =
+  'inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#562f54] text-white hover:bg-[#6b3b68] text-xs font-semibold transition-colors cursor-pointer';
+
 export const StudioEditorModal: React.FC = () => {
   const {
     data,
@@ -231,20 +237,20 @@ export const StudioEditorModal: React.FC = () => {
       role="dialog"
       aria-modal="true"
       aria-label="Portfolio Studio Content Manager"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/75 overflow-y-auto no-print"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 overflow-y-auto no-print"
       onClick={() => setStudioOpen(false)}
     >
       <div
-        className="relative w-full max-w-5xl my-auto bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col"
+        className="relative w-full max-w-5xl my-auto bg-[#F5F4F0] dark:bg-[#252525] border border-[#DCDCDC] dark:border-[#333333] rounded-xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Bar */}
-        <div className="flex items-center justify-between gap-4 px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-[#F8FAFC] dark:bg-[#060B16]">
+        <div className="flex items-center justify-between gap-4 px-6 py-4 border-b border-[#DCDCDC] dark:border-[#333333] bg-[#EDECE8] dark:bg-[#0D0D0D]">
           <div>
-            <h2 className="font-display text-lg font-bold text-slate-900 dark:text-white">
+            <h2 className="font-display text-lg font-bold text-[#0D0D0D] dark:text-[#F5F4F0]">
               Portfolio Studio & Verified Content Manager
             </h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-[#4D4D4D] dark:text-[#B8B8B8]">
               Changes save automatically to browser storage and can be exported as JSON anytime.
             </p>
           </div>
@@ -253,14 +259,14 @@ export const StudioEditorModal: React.FC = () => {
             type="button"
             onClick={() => setStudioOpen(false)}
             aria-label="Close Studio Editor"
-            className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+            className="p-1.5 rounded-lg text-[#4D4D4D] hover:text-[#0D0D0D] dark:text-[#B8B8B8] dark:hover:text-[#F5F4F0]"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Navigation Tabs */}
-        <div className="px-6 py-2.5 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#060B16]/60 flex flex-wrap items-center gap-1.5">
+        <div className="px-6 py-2.5 border-b border-[#DCDCDC] dark:border-[#333333] bg-[#EDECE8]/60 dark:bg-[#0D0D0D]/60 flex flex-wrap items-center gap-1.5">
           {(
             [
               { id: 'profile', label: '1. Profile & Contact' },
@@ -278,8 +284,8 @@ export const StudioEditorModal: React.FC = () => {
               onClick={() => setActiveTab(t.id)}
               className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap shrink-0 ${
                 activeTab === t.id
-                  ? 'bg-blue-600 text-white font-semibold'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  ? 'bg-[#562f54] text-white font-semibold'
+                  : 'text-[#4D4D4D] dark:text-[#B8B8B8] hover:text-[#0D0D0D] dark:hover:text-[#F5F4F0]'
               }`}
             >
               {t.label}
@@ -288,7 +294,7 @@ export const StudioEditorModal: React.FC = () => {
         </div>
 
         {statusNotice && (
-          <div className="px-6 py-2 bg-emerald-600 text-white text-xs font-medium flex items-center justify-between">
+          <div className="px-6 py-2 bg-[#0D0D0D] text-[#F5F4F0] dark:bg-[#EDECE8] dark:text-[#0D0D0D] text-xs font-medium flex items-center justify-between">
             <span>{statusNotice}</span>
           </div>
         )}
@@ -300,7 +306,7 @@ export const StudioEditorModal: React.FC = () => {
             <div className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-[#252525] dark:text-[#DCDCDC] mb-1">
                     Full Name
                   </label>
                   <input
@@ -312,12 +318,12 @@ export const StudioEditorModal: React.FC = () => {
                         profile: { ...prev.profile, fullName: e.target.value },
                       }))
                     }
-                    className="w-full px-3 py-2 rounded-lg bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-[#252525] dark:text-[#DCDCDC] mb-1">
                     Availability Status (Editable)
                   </label>
                   <input
@@ -330,12 +336,12 @@ export const StudioEditorModal: React.FC = () => {
                       }))
                     }
                     placeholder="e.g. Open to Software & AI Internships"
-                    className="w-full px-3 py-2 rounded-lg bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-[#252525] dark:text-[#DCDCDC] mb-1">
                     Professional Email
                   </label>
                   <input
@@ -348,12 +354,12 @@ export const StudioEditorModal: React.FC = () => {
                       }))
                     }
                     placeholder="Enter your verified email address"
-                    className="w-full px-3 py-2 rounded-lg bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-[#252525] dark:text-[#DCDCDC] mb-1">
                     Phone Number (Optional)
                   </label>
                   <input
@@ -366,12 +372,12 @@ export const StudioEditorModal: React.FC = () => {
                       }))
                     }
                     placeholder="Optional phone number"
-                    className="w-full px-3 py-2 rounded-lg bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-[#252525] dark:text-[#DCDCDC] mb-1">
                     LinkedIn Profile URL
                   </label>
                   <input
@@ -384,12 +390,12 @@ export const StudioEditorModal: React.FC = () => {
                       }))
                     }
                     placeholder="https://www.linkedin.com/in/..."
-                    className="w-full px-3 py-2 rounded-lg bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-[#252525] dark:text-[#DCDCDC] mb-1">
                     GitHub Profile URL
                   </label>
                   <input
@@ -401,12 +407,12 @@ export const StudioEditorModal: React.FC = () => {
                         profile: { ...prev.profile, githubUrl: e.target.value },
                       }))
                     }
-                    className="w-full px-3 py-2 rounded-lg bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-[#252525] dark:text-[#DCDCDC] mb-1">
                     Portrait Image URL or Upload
                   </label>
                   <div className="flex items-center gap-2">
@@ -419,9 +425,9 @@ export const StudioEditorModal: React.FC = () => {
                           profile: { ...prev.profile, portraitUrl: e.target.value },
                         }))
                       }
-                      className="w-full px-3 py-2 rounded-lg bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                      className={INPUT_CLASS}
                     />
-                    <label className="px-3 py-2 rounded-lg bg-slate-900 dark:bg-blue-600 text-white text-xs font-semibold cursor-pointer shrink-0">
+                    <label className="px-3 py-2 rounded-lg bg-[#0D0D0D] text-[#F5F4F0] dark:bg-[#EDECE8] dark:text-[#0D0D0D] text-xs font-semibold cursor-pointer shrink-0">
                       Upload Photo
                       <input
                         type="file"
@@ -441,7 +447,7 @@ export const StudioEditorModal: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-[#252525] dark:text-[#DCDCDC] mb-1">
                     Location
                   </label>
                   <input
@@ -453,7 +459,7 @@ export const StudioEditorModal: React.FC = () => {
                         profile: { ...prev.profile, location: e.target.value },
                       }))
                     }
-                    className="w-full px-3 py-2 rounded-lg bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                 </div>
               </div>
@@ -465,7 +471,7 @@ export const StudioEditorModal: React.FC = () => {
             <div className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-[#252525] dark:text-[#DCDCDC] mb-1">
                     Degree
                   </label>
                   <input
@@ -477,12 +483,12 @@ export const StudioEditorModal: React.FC = () => {
                         education: { ...prev.education, degree: e.target.value },
                       }))
                     }
-                    className="w-full px-3 py-2 rounded-lg bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-[#252525] dark:text-[#DCDCDC] mb-1">
                     Branch / Specialization
                   </label>
                   <input
@@ -494,12 +500,12 @@ export const StudioEditorModal: React.FC = () => {
                         education: { ...prev.education, branch: e.target.value },
                       }))
                     }
-                    className="w-full px-3 py-2 rounded-lg bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-[#252525] dark:text-[#DCDCDC] mb-1">
                     College / University Name
                   </label>
                   <input
@@ -511,12 +517,12 @@ export const StudioEditorModal: React.FC = () => {
                         education: { ...prev.education, institution: e.target.value },
                       }))
                     }
-                    className="w-full px-3 py-2 rounded-lg bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-[#252525] dark:text-[#DCDCDC] mb-1">
                     Verified CGPA
                   </label>
                   <input
@@ -528,12 +534,12 @@ export const StudioEditorModal: React.FC = () => {
                         education: { ...prev.education, cgpa: e.target.value },
                       }))
                     }
-                    className="w-full px-3 py-2 rounded-lg bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-[#252525] dark:text-[#DCDCDC] mb-1">
                     Start Year
                   </label>
                   <input
@@ -545,12 +551,12 @@ export const StudioEditorModal: React.FC = () => {
                         education: { ...prev.education, startYear: e.target.value },
                       }))
                     }
-                    className="w-full px-3 py-2 rounded-lg bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-[#252525] dark:text-[#DCDCDC] mb-1">
                     Expected Graduation Year
                   </label>
                   <input
@@ -562,13 +568,13 @@ export const StudioEditorModal: React.FC = () => {
                         education: { ...prev.education, graduationYear: e.target.value },
                       }))
                     }
-                    className="w-full px-3 py-2 rounded-lg bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-[#252525] dark:text-[#DCDCDC] mb-1">
                   Relevant Coursework (Comma-separated)
                 </label>
                 <input
@@ -586,7 +592,7 @@ export const StudioEditorModal: React.FC = () => {
                       },
                     }))
                   }
-                  className="w-full px-3 py-2 rounded-lg bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                  className={INPUT_CLASS}
                 />
               </div>
             </div>
@@ -597,9 +603,9 @@ export const StudioEditorModal: React.FC = () => {
             <div className="space-y-6">
               <form
                 onSubmit={handleAddProject}
-                className="p-5 rounded-xl bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 space-y-4"
+                className="p-5 rounded-xl bg-[#EDECE8] dark:bg-[#0D0D0D] border border-[#DCDCDC] dark:border-[#333333] space-y-4"
               >
-                <h3 className="font-display text-base font-bold text-slate-900 dark:text-white">
+                <h3 className="font-display text-base font-bold text-[#0D0D0D] dark:text-[#F5F4F0]">
                   Add New Verified Project
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -609,19 +615,19 @@ export const StudioEditorModal: React.FC = () => {
                     value={projTitle}
                     onChange={(e) => setProjTitle(e.target.value)}
                     placeholder="Project Name *"
-                    className="px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                   <input
                     type="text"
                     value={projSubtitle}
                     onChange={(e) => setProjSubtitle(e.target.value)}
                     placeholder="Short Subtitle"
-                    className="px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                   <select
                     value={projCategory}
                     onChange={(e) => setProjCategory(e.target.value as ProjectCategory)}
-                    className="px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   >
                     <option value="AI & LLM Systems">AI & LLM Systems</option>
                     <option value="Full-Stack & Web">Full-Stack & Web</option>
@@ -631,7 +637,7 @@ export const StudioEditorModal: React.FC = () => {
                   <select
                     value={projStatus}
                     onChange={(e) => setProjStatus(e.target.value as ProjectStatus)}
-                    className="px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   >
                     <option value="Live Production">Live Production</option>
                     <option value="Completed">Completed</option>
@@ -644,14 +650,14 @@ export const StudioEditorModal: React.FC = () => {
                     value={projTech}
                     onChange={(e) => setProjTech(e.target.value)}
                     placeholder="Technologies (comma-separated, e.g. Python, FastAPI)"
-                    className="px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                   <input
                     type="url"
                     value={projGithub}
                     onChange={(e) => setProjGithub(e.target.value)}
                     placeholder="GitHub Repo URL"
-                    className="px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                 </div>
                 <textarea
@@ -660,27 +666,24 @@ export const StudioEditorModal: React.FC = () => {
                   value={projDesc}
                   onChange={(e) => setProjDesc(e.target.value)}
                   placeholder="Project Description *"
-                  className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                  className={INPUT_CLASS}
                 />
-                <button
-                  type="submit"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold hover:bg-blue-500"
-                >
+                <button type="submit" className={PRIMARY_BTN_CLASS}>
                   <Plus className="w-4 h-4" />
                   <span>Add Project</span>
                 </button>
               </form>
 
               <div className="space-y-3">
-                <h4 className="font-mono text-xs text-slate-400">EXISTING FEATURED PROJECTS</h4>
+                <h4 className="font-mono text-xs text-[#858585]">EXISTING FEATURED PROJECTS</h4>
                 {data.projects.map((p) => (
                   <div
                     key={p.id}
-                    className="p-4 rounded-xl bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3"
+                    className="p-4 rounded-xl bg-[#EDECE8] dark:bg-[#0D0D0D] border border-[#DCDCDC] dark:border-[#333333] flex flex-wrap items-center justify-between gap-3"
                   >
                     <div>
-                      <p className="font-semibold text-slate-900 dark:text-white">{p.title}</p>
-                      <p className="text-xs text-slate-500">{p.subtitle}</p>
+                      <p className="font-semibold text-[#0D0D0D] dark:text-[#F5F4F0]">{p.title}</p>
+                      <p className="text-xs text-[#4D4D4D] dark:text-[#B8B8B8]">{p.subtitle}</p>
                     </div>
                     <div className="flex items-center gap-2">
                       <select
@@ -695,7 +698,7 @@ export const StudioEditorModal: React.FC = () => {
                             ),
                           }))
                         }
-                        className="px-2.5 py-1 text-xs rounded-md bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200"
+                        className="px-2.5 py-1 text-xs rounded-md bg-[#F5F4F0] dark:bg-[#252525] border border-[#DCDCDC] dark:border-[#333333] text-[#0D0D0D] dark:text-[#EDECE8]"
                       >
                         <option value="Live Production">Live Production</option>
                         <option value="Completed">Completed</option>
@@ -716,15 +719,15 @@ export const StudioEditorModal: React.FC = () => {
               {data.hackathons.map((hack) => (
                 <div
                   key={hack.id}
-                  className="p-5 rounded-xl bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 space-y-4"
+                  className="p-5 rounded-xl bg-[#EDECE8] dark:bg-[#0D0D0D] border border-[#DCDCDC] dark:border-[#333333] space-y-4"
                 >
-                  <h3 className="font-display text-base font-bold text-slate-900 dark:text-white">
+                  <h3 className="font-display text-base font-bold text-[#0D0D0D] dark:text-[#F5F4F0]">
                     {hack.eventName}
                   </h3>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">
+                      <label className="block text-xs font-semibold text-[#4D4D4D] dark:text-[#B8B8B8] mb-1">
                         Team Information
                       </label>
                       <input
@@ -738,12 +741,12 @@ export const StudioEditorModal: React.FC = () => {
                             ),
                           }))
                         }
-                        className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                        className={INPUT_CLASS}
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">
+                      <label className="block text-xs font-semibold text-[#4D4D4D] dark:text-[#B8B8B8] mb-1">
                         Project Developed
                       </label>
                       <input
@@ -757,12 +760,12 @@ export const StudioEditorModal: React.FC = () => {
                             ),
                           }))
                         }
-                        className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                        className={INPUT_CLASS}
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">
+                      <label className="block text-xs font-semibold text-[#4D4D4D] dark:text-[#B8B8B8] mb-1">
                         Verified Outcome
                       </label>
                       <input
@@ -776,15 +779,15 @@ export const StudioEditorModal: React.FC = () => {
                             ),
                           }))
                         }
-                        className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                        className={INPUT_CLASS}
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">
+                      <label className="block text-xs font-semibold text-[#4D4D4D] dark:text-[#B8B8B8] mb-1">
                         Upload Certificate / Event Photo
                       </label>
-                      <label className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold cursor-pointer">
+                      <label className={PRIMARY_BTN_CLASS}>
                         <Upload className="w-3.5 h-3.5" />
                         <span>Upload Event Photo / Certificate</span>
                         <input
@@ -813,7 +816,7 @@ export const StudioEditorModal: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">
+                    <label className="block text-xs font-semibold text-[#4D4D4D] dark:text-[#B8B8B8] mb-1">
                       Participation Details
                     </label>
                     <textarea
@@ -827,7 +830,7 @@ export const StudioEditorModal: React.FC = () => {
                           ),
                         }))
                       }
-                      className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                      className={INPUT_CLASS}
                     />
                   </div>
                 </div>
@@ -840,9 +843,9 @@ export const StudioEditorModal: React.FC = () => {
             <div className="space-y-6">
               <form
                 onSubmit={handleAddCertificate}
-                className="p-5 rounded-xl bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 space-y-4"
+                className="p-5 rounded-xl bg-[#EDECE8] dark:bg-[#0D0D0D] border border-[#DCDCDC] dark:border-[#333333] space-y-4"
               >
-                <h3 className="font-display text-base font-bold text-slate-900 dark:text-white">
+                <h3 className="font-display text-base font-bold text-[#0D0D0D] dark:text-[#F5F4F0]">
                   Add Verified Certificate
                 </h3>
 
@@ -853,7 +856,7 @@ export const StudioEditorModal: React.FC = () => {
                     value={certName}
                     onChange={(e) => setCertName(e.target.value)}
                     placeholder="Certificate Name *"
-                    className="px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                   <input
                     type="text"
@@ -861,12 +864,12 @@ export const StudioEditorModal: React.FC = () => {
                     value={certIssuer}
                     onChange={(e) => setCertIssuer(e.target.value)}
                     placeholder="Issuing Organization *"
-                    className="px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                   <select
                     value={certCategory}
                     onChange={(e) => setCertCategory(e.target.value as CertificateCategory)}
-                    className="px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   >
                     <option value="Programming">Programming</option>
                     <option value="Artificial Intelligence">Artificial Intelligence</option>
@@ -882,31 +885,31 @@ export const StudioEditorModal: React.FC = () => {
                     value={certDate}
                     onChange={(e) => setCertDate(e.target.value)}
                     placeholder="Issue Date (e.g. Oct 2026)"
-                    className="px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                   <input
                     type="text"
                     value={certCredId}
                     onChange={(e) => setCertCredId(e.target.value)}
                     placeholder="Credential ID (optional)"
-                    className="px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                   <input
                     type="url"
                     value={certUrl}
                     onChange={(e) => setCertUrl(e.target.value)}
                     placeholder="Verification URL (optional)"
-                    className="px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                   <input
                     type="text"
                     value={certSkill}
                     onChange={(e) => setCertSkill(e.target.value)}
                     placeholder="Related Skill (e.g. Python, GenAI)"
-                    className="px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                    className={INPUT_CLASS}
                   />
                   <div className="flex items-center gap-2">
-                    <label className="px-3 py-2 rounded-lg bg-slate-900 dark:bg-slate-800 text-white text-xs font-semibold cursor-pointer">
+                    <label className="px-3 py-2 rounded-lg bg-[#252525] text-[#F5F4F0] text-xs font-semibold cursor-pointer">
                       Upload Certificate Image
                       <input
                         type="file"
@@ -916,15 +919,14 @@ export const StudioEditorModal: React.FC = () => {
                       />
                     </label>
                     {certPreviewUrl && (
-                      <span className="text-xs text-emerald-500 font-mono">Image attached</span>
+                      <span className="text-xs text-[#252525] dark:text-[#EDECE8] font-mono">
+                        Image attached
+                      </span>
                     )}
                   </div>
                 </div>
 
-                <button
-                  type="submit"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold hover:bg-blue-500"
-                >
+                <button type="submit" className={PRIMARY_BTN_CLASS}>
                   <Plus className="w-4 h-4" />
                   <span>Add Certificate</span>
                 </button>
@@ -935,11 +937,11 @@ export const StudioEditorModal: React.FC = () => {
                   {data.certificates.map((c) => (
                     <div
                       key={c.id}
-                      className="p-3.5 rounded-lg bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 flex items-center justify-between"
+                      className="p-3.5 rounded-lg bg-[#EDECE8] dark:bg-[#0D0D0D] border border-[#DCDCDC] dark:border-[#333333] flex items-center justify-between"
                     >
                       <div>
-                        <p className="font-semibold text-slate-900 dark:text-white">{c.name}</p>
-                        <p className="text-xs text-slate-500">
+                        <p className="font-semibold text-[#0D0D0D] dark:text-[#F5F4F0]">{c.name}</p>
+                        <p className="text-xs text-[#4D4D4D] dark:text-[#B8B8B8]">
                           {c.issuer} · {c.category}
                         </p>
                       </div>
@@ -951,7 +953,7 @@ export const StudioEditorModal: React.FC = () => {
                             certificates: prev.certificates.filter((item) => item.id !== c.id),
                           }))
                         }
-                        className="p-1.5 text-rose-500 hover:bg-rose-500/10 rounded-lg"
+                        className="p-1.5 text-[#4D4D4D] dark:text-[#B8B8B8] hover:text-[#0D0D0D] dark:hover:text-[#F5F4F0] rounded-lg"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -968,9 +970,9 @@ export const StudioEditorModal: React.FC = () => {
               {/* Add Achievement */}
               <form
                 onSubmit={handleAddAchievement}
-                className="p-5 rounded-xl bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 space-y-3"
+                className="p-5 rounded-xl bg-[#EDECE8] dark:bg-[#0D0D0D] border border-[#DCDCDC] dark:border-[#333333] space-y-3"
               >
-                <h3 className="font-display text-base font-bold text-slate-900 dark:text-white">
+                <h3 className="font-display text-base font-bold text-[#0D0D0D] dark:text-[#F5F4F0]">
                   Add Verified Achievement
                 </h3>
                 <input
@@ -979,21 +981,21 @@ export const StudioEditorModal: React.FC = () => {
                   value={achTitle}
                   onChange={(e) => setAchTitle(e.target.value)}
                   placeholder="Achievement Title *"
-                  className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                  className={INPUT_CLASS}
                 />
                 <input
                   type="text"
                   value={achOrg}
                   onChange={(e) => setAchOrg(e.target.value)}
                   placeholder="Issuing Organization"
-                  className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                  className={INPUT_CLASS}
                 />
                 <select
                   value={achCategory}
                   onChange={(e) =>
                     setAchCategory(e.target.value as AchievementEntry['category'])
                   }
-                  className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                  className={INPUT_CLASS}
                 >
                   <option value="Academic">Academic</option>
                   <option value="Hackathon">Hackathon</option>
@@ -1011,19 +1013,16 @@ export const StudioEditorModal: React.FC = () => {
                   value={achDesc}
                   onChange={(e) => setAchDesc(e.target.value)}
                   placeholder="Supporting Description *"
-                  className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                  className={INPUT_CLASS}
                 />
                 <input
                   type="url"
                   value={achUrl}
                   onChange={(e) => setAchUrl(e.target.value)}
                   placeholder="Verification Link (optional)"
-                  className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                  className={INPUT_CLASS}
                 />
-                <button
-                  type="submit"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold hover:bg-blue-500"
-                >
+                <button type="submit" className={PRIMARY_BTN_CLASS}>
                   <Plus className="w-4 h-4" />
                   <span>Save Achievement</span>
                 </button>
@@ -1032,15 +1031,15 @@ export const StudioEditorModal: React.FC = () => {
               {/* Add Experience */}
               <form
                 onSubmit={handleAddExperience}
-                className="p-5 rounded-xl bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 space-y-3"
+                className="p-5 rounded-xl bg-[#EDECE8] dark:bg-[#0D0D0D] border border-[#DCDCDC] dark:border-[#333333] space-y-3"
               >
-                <h3 className="font-display text-base font-bold text-slate-900 dark:text-white">
+                <h3 className="font-display text-base font-bold text-[#0D0D0D] dark:text-[#F5F4F0]">
                   Add Experience / Involvement
                 </h3>
                 <select
                   value={expType}
                   onChange={(e) => setExpType(e.target.value as ExperienceEntry['type'])}
-                  className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                  className={INPUT_CLASS}
                 >
                   <option value="Internship">Internship</option>
                   <option value="Freelance">Freelance</option>
@@ -1057,7 +1056,7 @@ export const StudioEditorModal: React.FC = () => {
                   value={expRole}
                   onChange={(e) => setExpRole(e.target.value)}
                   placeholder="Role / Title *"
-                  className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                  className={INPUT_CLASS}
                 />
                 <input
                   type="text"
@@ -1065,33 +1064,30 @@ export const StudioEditorModal: React.FC = () => {
                   value={expOrg}
                   onChange={(e) => setExpOrg(e.target.value)}
                   placeholder="Organization / Community *"
-                  className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                  className={INPUT_CLASS}
                 />
                 <input
                   type="text"
                   value={expPeriod}
                   onChange={(e) => setExpPeriod(e.target.value)}
                   placeholder="Duration / Period (e.g. Summer 2026)"
-                  className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                  className={INPUT_CLASS}
                 />
                 <input
                   type="text"
                   value={expTech}
                   onChange={(e) => setExpTech(e.target.value)}
                   placeholder="Technologies (comma-separated)"
-                  className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                  className={INPUT_CLASS}
                 />
                 <textarea
                   rows={2}
                   value={expDesc}
                   onChange={(e) => setExpDesc(e.target.value)}
                   placeholder="Responsibilities & Impact"
-                  className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                  className={INPUT_CLASS}
                 />
-                <button
-                  type="submit"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold hover:bg-blue-500"
-                >
+                <button type="submit" className={PRIMARY_BTN_CLASS}>
                   <Plus className="w-4 h-4" />
                   <span>Save Experience</span>
                 </button>
@@ -1102,12 +1098,12 @@ export const StudioEditorModal: React.FC = () => {
           {/* TAB 7: JSON EXPORT / IMPORT & RESET */}
           {activeTab === 'json' && (
             <div className="space-y-6">
-              <div className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-xl bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800">
+              <div className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-xl bg-[#EDECE8] dark:bg-[#0D0D0D] border border-[#DCDCDC] dark:border-[#333333]">
                 <div>
-                  <h3 className="font-display text-base font-bold text-slate-900 dark:text-white">
+                  <h3 className="font-display text-base font-bold text-[#0D0D0D] dark:text-[#F5F4F0]">
                     Export or Reset Portfolio Data
                   </h3>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-[#4D4D4D] dark:text-[#B8B8B8]">
                     Download your structured content as a portable JSON file or restore default
                     verified settings.
                   </p>
@@ -1121,7 +1117,7 @@ export const StudioEditorModal: React.FC = () => {
                       setCopied(true);
                       setTimeout(() => setCopied(false), 2000);
                     }}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-slate-900 dark:bg-slate-800 text-white text-xs font-semibold"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#252525] text-[#F5F4F0] text-xs font-semibold"
                   >
                     {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copied ? 'Copied JSON' : 'Copy JSON'}</span>
@@ -1130,7 +1126,7 @@ export const StudioEditorModal: React.FC = () => {
                   <button
                     type="button"
                     onClick={handleDownloadJson}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold"
+                    className={PRIMARY_BTN_CLASS}
                   >
                     <Download className="w-3.5 h-3.5" />
                     <span>Download .JSON</span>
@@ -1142,7 +1138,7 @@ export const StudioEditorModal: React.FC = () => {
                       resetToDefaults();
                       notify('Restored verified default portfolio data.');
                     }}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-rose-300 dark:border-rose-800 text-rose-600 dark:text-rose-400 text-xs font-semibold"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-[#4D4D4D] text-[#0D0D0D] dark:text-[#EDECE8] text-xs font-semibold"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                     <span>Reset to Defaults</span>
@@ -1151,7 +1147,7 @@ export const StudioEditorModal: React.FC = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
+                <label className="block text-xs font-semibold text-[#252525] dark:text-[#DCDCDC]">
                   Import Portfolio JSON Snapshot
                 </label>
                 <textarea
@@ -1159,7 +1155,7 @@ export const StudioEditorModal: React.FC = () => {
                   value={jsonInput}
                   onChange={(e) => setJsonInput(e.target.value)}
                   placeholder="Paste exported portfolio JSON here..."
-                  className="w-full p-3 font-mono text-xs rounded-lg bg-[#F8FAFC] dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
+                  className={`${INPUT_CLASS} font-mono text-xs`}
                 />
                 <button
                   type="button"
@@ -1172,7 +1168,7 @@ export const StudioEditorModal: React.FC = () => {
                       notify(res.error || 'Invalid JSON');
                     }
                   }}
-                  className="px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold hover:bg-blue-500"
+                  className={PRIMARY_BTN_CLASS}
                 >
                   Apply Imported JSON
                 </button>

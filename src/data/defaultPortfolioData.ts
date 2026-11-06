@@ -24,7 +24,7 @@ export const VERIFIED_GITHUB_FALLBACK_REPOS: GitHubRepoSummary[] = [
     stargazers_count: 0,
     forks_count: 0,
     updated_at: '2026-10-24T18:33:31Z',
-    homepage: null,
+    homepage: 'https://edunexus-ai-web.onrender.com/',
     topics: ['fastapi', 'supabase', 'ai', 'education', 'analytics'],
   },
   {
@@ -232,11 +232,11 @@ export const DEFAULT_PORTFOLIO_DATA: PortfolioData = {
     {
       id: 'tl-2',
       category: 'Projects',
-      title: 'CourseCraft AI & Safe Drinking Water Web — Live Cloud Deployments',
+      title: 'EduNexus AI, CourseCraft AI & Safe Drinking Water Web — Live Cloud Deployments',
       organization: 'Render Cloud & GitHub (ambatitharunsai-tech)',
       period: '2026',
       description:
-        'Engineered and deployed CourseCraft AI (https://coursecraft-e1jx.onrender.com/) and Safe Drinking Water Web (https://safe-water-web.onrender.com/) to live production on Render.',
+        'Engineered and deployed EduNexus AI (https://edunexus-ai-web.onrender.com/), CourseCraft AI (https://coursecraft-e1jx.onrender.com/), and Safe Drinking Water Web (https://safe-water-web.onrender.com/) to live production on Render.',
       verified: true,
     },
     {
@@ -306,13 +306,13 @@ export const DEFAULT_PORTFOLIO_DATA: PortfolioData = {
       title: 'EduNexus AI',
       subtitle: 'Smart Campus Analytics & Student Journey Intelligence Platform',
       category: 'AI & LLM Systems',
-      status: 'Completed',
+      status: 'Live Production',
       description:
         'Smart Campus Analytics platform engineered for student success analytics, academic and placement risk indicators, and end-to-end student journey tracking.',
       problemSolved:
         'Educational institutions often track attendance, grades, and placement readiness in disconnected silos, delaying timely support for at-risk students.',
       architectureOverview:
-        'Combines a Python FastAPI backend and Supabase PostgreSQL relational schema with a TypeScript/React analytics dashboard and AI-driven risk indicator synthesis.',
+        'Combines a Python FastAPI backend and Supabase PostgreSQL relational schema with a TypeScript/React analytics dashboard and AI-driven risk indicator synthesis, deployed live on Render.',
       features: [
         'Smart Campus Analytics across cohorts and departments',
         'Student success analytics and composite performance scoring',
@@ -323,9 +323,10 @@ export const DEFAULT_PORTFOLIO_DATA: PortfolioData = {
       technologies: ['Python', 'FastAPI', 'React', 'TypeScript', 'Supabase', 'PostgreSQL', 'AI Analytics'],
       githubUrl: 'https://github.com/ambatitharunsai-tech/edunexus-ai',
       secondaryGithubUrl: 'https://github.com/ambatitharunsai-tech/EduNexusAI',
+      liveUrl: 'https://edunexus-ai-web.onrender.com/',
       previewImage: edunexusVisual,
       updatedAt: '2026-10-24',
-      highlightMetric: 'Smart Campus & Student Success Analytics',
+      highlightMetric: 'Live on Render · Smart Campus & Student Success AI',
       nodeIndex: 0,
     },
     {
@@ -543,12 +544,12 @@ export const DEFAULT_PORTFOLIO_DATA: PortfolioData = {
     {
       id: 'ach-live-deployments',
       category: 'Project Recognition',
-      title: 'Live Cloud Production Deployments on Render (CourseCraft AI & Safe Water Web)',
+      title: 'Live Cloud Production Deployments on Render (EduNexus AI, CourseCraft AI & Safe Water Web)',
       organization: 'Render Cloud & GitHub',
       date: '2026',
       description:
-        'Architected, built, and deployed CourseCraft AI (https://coursecraft-e1jx.onrender.com/) and Safe Drinking Water Web (https://safe-water-web.onrender.com/) as public cloud applications.',
-      verificationUrl: 'https://coursecraft-e1jx.onrender.com/',
+        'Architected, built, and deployed EduNexus AI (https://edunexus-ai-web.onrender.com/), CourseCraft AI (https://coursecraft-e1jx.onrender.com/), and Safe Drinking Water Web (https://safe-water-web.onrender.com/) as public cloud applications.',
+      verificationUrl: 'https://edunexus-ai-web.onrender.com/',
       verified: true,
     },
     {

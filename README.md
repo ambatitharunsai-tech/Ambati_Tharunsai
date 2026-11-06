@@ -8,12 +8,12 @@ A modern, full-stack developer portfolio built for **Ambati Tharun Sai** (Comput
 
 ---
 
-## Featured Projects
+## Featured Projects & Live Websites
 
-1. **EduNexus AI** — Smart Campus Analytics, student success analytics, academic & placement risk indicators, and student journey tracking ([GitHub](https://github.com/ambatitharunsai-tech/edunexus-ai))
+1. **EduNexus AI** — Smart Campus Analytics, student success analytics, academic & placement risk indicators, and student journey tracking ([GitHub](https://github.com/ambatitharunsai-tech/edunexus-ai) | [Live Demo](https://edunexus-ai-web.onrender.com/))
 2. **Safe Drinking Water Web** — Water awareness platform with hydration tracker, safety checklist, and community alerts ([GitHub](https://github.com/ambatitharunsai-tech/safe-water-web) | [Live Demo](https://safe-water-web.onrender.com/))
-3. **Ireagation System** — Smart agriculture application with IoT-based irrigation, crop management, weather integration, and AI agronomist ([GitHub](https://github.com/ambatitharunsai-tech/Ireagation_system))
-4. **CourseCraft AI** — AI-powered learning curriculum generator with personalized learning paths and PDF/Markdown exports ([GitHub](https://github.com/ambatitharunsai-tech/-CourseCraft) | [Live Demo](https://coursecraft-e1jx.onrender.com/))
+3. **CourseCraft AI** — AI-powered learning curriculum generator with personalized learning paths and PDF/Markdown exports ([GitHub](https://github.com/ambatitharunsai-tech/-CourseCraft) | [Live Demo](https://coursecraft-e1jx.onrender.com/))
+4. **Ireagation System** — Smart agriculture application with IoT-based irrigation, crop management, weather integration, and AI agronomist ([GitHub](https://github.com/ambatitharunsai-tech/Ireagation_system))
 5. **Hema AI** — NLP-based intelligent assistant featuring semantic search, intent classification, and document analysis ([GitHub](https://github.com/ambatitharunsai-tech/mini_llm))
 
 ---
