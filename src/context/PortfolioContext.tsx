@@ -38,8 +38,8 @@ interface PortfolioContextValue {
   refreshGitHub: () => Promise<void>;
 }
 
-const STORAGE_KEY = 'ambati_tharun_sai_portfolio_v1';
-const GITHUB_CACHE_KEY = 'ambati_tharun_sai_github_cache_v1';
+const STORAGE_KEY = 'ambati_tharun_sai_portfolio_v2';
+const GITHUB_CACHE_KEY = 'ambati_tharun_sai_github_cache_v2';
 const THEME_KEY = 'ambati_tharun_sai_theme_v1';
 
 const PortfolioContext = createContext<PortfolioContextValue | null>(null);
@@ -50,13 +50,20 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
+        const hydratedProfile = {
+          ...DEFAULT_PORTFOLIO_DATA.profile,
+          ...(parsed.profile || {}),
+        };
+        if (!hydratedProfile.email) {
+          hydratedProfile.email = DEFAULT_PORTFOLIO_DATA.profile.email;
+        }
+        if (!hydratedProfile.linkedinUrl) {
+          hydratedProfile.linkedinUrl = DEFAULT_PORTFOLIO_DATA.profile.linkedinUrl;
+        }
         return {
           ...DEFAULT_PORTFOLIO_DATA,
           ...parsed,
-          profile: {
-            ...DEFAULT_PORTFOLIO_DATA.profile,
-            ...(parsed.profile || {}),
-          },
+          profile: hydratedProfile,
         };
       }
     } catch {

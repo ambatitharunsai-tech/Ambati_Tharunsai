@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Search } from 'lucide-react';
+import { CheckCircle2, Search } from 'lucide-react';
+import { motion } from 'motion/react';
 import { usePortfolio } from '../context/PortfolioContext';
 
 export const SkillsSection: React.FC = () => {
@@ -24,24 +25,24 @@ export const SkillsSection: React.FC = () => {
   return (
     <section
       id="skills"
-      className="py-20 sm:py-24 px-6 border-b border-slate-200 dark:border-slate-800/80 bg-[#F8FAFC] dark:bg-[#0B1325]"
+      className="py-20 sm:py-24 px-6 border-b border-slate-200 dark:border-slate-800/80 bg-[#F8FAFC] dark:bg-[#080D1E]"
     >
       <div className="max-w-[1360px] mx-auto space-y-10">
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
-            <p className="font-mono text-xs font-semibold tracking-wider text-blue-600 dark:text-cyan-400">
+            <p className="font-mono text-xs font-semibold tracking-wider text-blue-600 dark:text-indigo-400">
               02. TECHNICAL SKILLS & STACK ARCHITECTURE
             </p>
             <h2
               className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white"
               style={{ textWrap: 'balance' }}
             >
-              Categorized Engineering Capabilities Across 8 Technical Domains
+              Core Engineering Stack Across Frontend, Backend, Mobile, Databases, AI & Tools
             </h2>
             <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-              Organized by functional architectural layer—representing hands-on technologies used to
-              build, test, and deploy software systems.
+              Organized by architectural layer—representing hands-on technologies used to design,
+              develop, containerize, and deploy production software.
             </p>
           </div>
 
@@ -53,9 +54,9 @@ export const SkillsSection: React.FC = () => {
                 type="search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Filter skills (e.g. FastAPI, Groq)..."
+                placeholder="Filter skills (e.g. FastAPI, React, Groq)..."
                 aria-label="Search technical skills"
-                className="w-full sm:w-64 pl-9 pr-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400"
+                className="w-full sm:w-64 pl-9 pr-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white dark:bg-[#050814] border border-slate-200 dark:border-indigo-500/25 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-blue-500 dark:focus:border-violet-400"
               />
             </div>
             <div className="font-mono text-xs text-slate-500 dark:text-slate-400 tabular-nums px-2">
@@ -65,15 +66,15 @@ export const SkillsSection: React.FC = () => {
         </div>
 
         {/* Interactive Category Segmented Bar */}
-        <div className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-xl bg-slate-200/70 dark:bg-[#060B16] border border-slate-200 dark:border-slate-800">
+        <div className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-xl bg-slate-200/70 dark:bg-[#050814] border border-slate-200 dark:border-slate-800">
           {categories.map((cat) => (
             <button
               key={cat}
               type="button"
               onClick={() => setActiveCategory(cat)}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap shrink-0 ${
+              className={`px-3.5 py-1.5 text-xs font-medium rounded-lg transition-all whitespace-nowrap shrink-0 ${
                 activeCategory === cat
-                  ? 'bg-white dark:bg-blue-600 text-slate-900 dark:text-white shadow-xs font-semibold'
+                  ? 'bg-gradient-to-r from-blue-600 to-violet-600 text-white shadow-xs font-semibold'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
@@ -82,9 +83,9 @@ export const SkillsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Categorized Skills Grid (Zero fake percentage bars, Zero pill clutter) */}
+        {/* Categorized Skills Grid with Framer Motion Animated Skill Indicators */}
         {filteredGroups.length === 0 ? (
-          <div className="p-12 text-center rounded-2xl bg-white dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 space-y-2">
+          <div className="p-12 text-center rounded-2xl bg-white dark:bg-[#050814] border border-slate-200 dark:border-slate-800 space-y-2">
             <p className="text-sm font-medium text-slate-800 dark:text-slate-200">
               No skills matched "{searchQuery}"
             </p>
@@ -94,25 +95,29 @@ export const SkillsSection: React.FC = () => {
                 setSearchQuery('');
                 setActiveCategory('All');
               }}
-              className="text-xs font-semibold text-blue-600 dark:text-cyan-400 hover:underline"
+              className="text-xs font-semibold text-blue-600 dark:text-indigo-400 hover:underline"
             >
               Reset skill filters
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredGroups.map((group, index) => (
-              <div
+              <motion.div
                 key={group.id}
-                className="bg-white dark:bg-[#060B16] border border-slate-200 dark:border-slate-800/90 rounded-2xl p-6 flex flex-col justify-between space-y-5"
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.4, delay: index * 0.06 }}
+                className="bg-white/90 dark:bg-[#050814]/90 backdrop-blur-md border border-slate-200 dark:border-indigo-500/20 hover:border-blue-500/50 dark:hover:border-violet-400/50 rounded-2xl p-6 flex flex-col justify-between space-y-5 transition-colors shadow-xs"
               >
                 <div className="space-y-2">
                   <div className="flex items-baseline justify-between gap-2 border-b border-slate-100 dark:border-slate-800/80 pb-3">
-                    <span className="font-mono text-xs font-semibold text-blue-600 dark:text-cyan-400 tabular-nums">
-                      0{index + 1}
+                    <span className="font-mono text-xs font-semibold text-blue-600 dark:text-indigo-400 tabular-nums">
+                      CATEGORY 0{index + 1}
                     </span>
                     <span className="font-mono text-xs text-slate-400 dark:text-slate-500 tabular-nums">
-                      {group.skills.length} items
+                      {group.skills.length} technologies
                     </span>
                   </div>
 
@@ -124,21 +129,29 @@ export const SkillsSection: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Clean Structured Typography List */}
+                {/* Animated Skill Indicators List */}
                 <ul className="divide-y divide-slate-100 dark:divide-slate-800/60 border-t border-slate-100 dark:border-slate-800/60 pt-1">
-                  {group.skills.map((skill) => (
-                    <li
+                  {group.skills.map((skill, sIdx) => (
+                    <motion.li
                       key={skill}
-                      className="py-2 flex items-center justify-between text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200"
+                      initial={{ opacity: 0, x: -8 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.25, delay: sIdx * 0.04 }}
+                      className="py-2.5 flex items-center justify-between text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 group"
                     >
-                      <span>{skill}</span>
-                      <span className="font-mono text-[11px] text-slate-400 dark:text-slate-500">
-                        Verified
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-violet-500 group-hover:scale-125 transition-transform" />
+                        <span>{skill}</span>
+                      </div>
+                      <span className="inline-flex items-center gap-1 font-mono text-[11px] text-emerald-600 dark:text-emerald-400/90">
+                        <CheckCircle2 className="w-3 h-3" />
+                        <span>Active</span>
                       </span>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             ))}
           </div>
         )}

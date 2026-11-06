@@ -33,7 +33,7 @@ const VALID_ANCHORS = new Set([
 ]);
 
 const PortfolioShell: React.FC = () => {
-  const { data, zenMode, setSelectedProjectId } = usePortfolio();
+  const { data, setSelectedProjectId } = usePortfolio();
   const [notFoundRoute, setNotFoundRoute] = useState<string | null>(null);
 
   useEffect(() => {
@@ -99,18 +99,14 @@ const PortfolioShell: React.FC = () => {
       <Navbar />
       <main className="flex-1">
         <HeroSection />
-        {!zenMode && (
-          <>
-            <AboutSection />
-            <SkillsSection />
-            <ProjectsSection />
-            <InnovationSection />
-            <GitHubSection />
-            <CredentialsSection />
-            <ResumeSection />
-            <ContactAndFooter />
-          </>
-        )}
+        <AboutSection />
+        <SkillsSection />
+        <ProjectsSection />
+        <InnovationSection />
+        <GitHubSection />
+        <CredentialsSection />
+        <ResumeSection />
+        <ContactAndFooter />
       </main>
       <ProjectDetailModal />
       <StudioEditorModal />

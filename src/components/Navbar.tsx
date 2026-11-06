@@ -3,12 +3,8 @@ import { Menu, X } from 'lucide-react';
 import { usePortfolio } from '../context/PortfolioContext';
 
 export const Navbar: React.FC = () => {
-  const { data, zenMode } = usePortfolio();
+  const { data } = usePortfolio();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  if (zenMode) {
-    return null;
-  }
 
   const navLinks = [
     { label: 'Work', href: '#projects' },

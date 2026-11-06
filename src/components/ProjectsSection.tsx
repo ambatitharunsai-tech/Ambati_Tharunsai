@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowUpRight, ExternalLink, Github, Layers, Search } from 'lucide-react';
+import { motion } from 'motion/react';
 import { usePortfolio } from '../context/PortfolioContext';
 import { ProjectCategory, ProjectStatus } from '../types/portfolio';
 
@@ -23,7 +24,6 @@ export const ProjectsSection: React.FC = () => {
     'Live Production',
     'Completed',
     'Prototype',
-    'Concept',
   ];
 
   const filteredProjects = data.projects.filter((project) => {
@@ -41,25 +41,24 @@ export const ProjectsSection: React.FC = () => {
   return (
     <section
       id="projects"
-      className="py-20 sm:py-24 px-6 border-b border-slate-200 dark:border-slate-800/80 bg-white dark:bg-[#060B16]"
+      className="py-20 sm:py-24 px-6 border-b border-slate-200 dark:border-slate-800/80 bg-white dark:bg-[#050814]"
     >
       <div className="max-w-[1360px] mx-auto space-y-10">
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
-            <p className="font-mono text-xs font-semibold tracking-wider text-blue-600 dark:text-cyan-400">
-              03. FEATURED ENGINEERING WORK & CASE STUDIES
+            <p className="font-mono text-xs font-semibold tracking-wider text-blue-600 dark:text-indigo-400">
+              03. FEATURED PROJECTS & SYSTEM ARCHITECTURE
             </p>
             <h2
               className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white"
               style={{ textWrap: 'balance' }}
             >
-              Practical Software, AI Systems & Real-World Solutions
+              Production Web Apps, AI Platforms & Smart Technology Solutions
             </h2>
             <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-              Every project distinguishes its verified status—spanning live cloud deployments on
-              Render, full-stack GitHub repositories, functional prototypes, and smart-agriculture
-              architectural concepts.
+              Explore flagship projects including EduNexus AI, Safe Drinking Water Web, Ireagation
+              System, CourseCraft AI, and Hema AI—complete with source code and live cloud demos.
             </p>
           </div>
 
@@ -72,7 +71,7 @@ export const ProjectsSection: React.FC = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search projects or tech stack..."
               aria-label="Search featured projects"
-              className="w-full sm:w-72 pl-9 pr-3.5 py-2 text-xs sm:text-sm rounded-lg bg-[#F8FAFC] dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400"
+              className="w-full sm:w-72 pl-9 pr-3.5 py-2 text-xs sm:text-sm rounded-lg bg-[#F8FAFC] dark:bg-[#0B1124] border border-slate-200 dark:border-indigo-500/25 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-blue-500 dark:focus:border-violet-400"
             />
           </div>
         </div>
@@ -80,15 +79,15 @@ export const ProjectsSection: React.FC = () => {
         {/* Filter Bar: Domain Category & Project Status */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-slate-200 dark:border-slate-800">
           {/* Domain Tabs */}
-          <div className="flex flex-wrap items-center gap-1 p-1 rounded-lg bg-slate-100 dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800">
+          <div className="flex flex-wrap items-center gap-1 p-1 rounded-lg bg-slate-100 dark:bg-[#0B1124] border border-slate-200 dark:border-slate-800">
             {categories.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors whitespace-nowrap shrink-0 ${
+                className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all whitespace-nowrap shrink-0 ${
                   selectedCategory === cat
-                    ? 'bg-white dark:bg-blue-600 text-slate-900 dark:text-white shadow-xs font-semibold'
+                    ? 'bg-gradient-to-r from-blue-600 to-violet-600 text-white shadow-xs font-semibold'
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
@@ -107,7 +106,7 @@ export const ProjectsSection: React.FC = () => {
                 onClick={() => setSelectedStatus(st)}
                 className={`px-2.5 py-1 text-xs font-medium rounded-md transition-colors whitespace-nowrap shrink-0 ${
                   selectedStatus === st
-                    ? 'bg-slate-900 dark:bg-cyan-500 text-white dark:text-slate-950 font-semibold'
+                    ? 'bg-slate-900 dark:bg-indigo-500 text-white font-semibold'
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
@@ -119,7 +118,7 @@ export const ProjectsSection: React.FC = () => {
 
         {/* Projects Grid */}
         {filteredProjects.length === 0 ? (
-          <div className="p-12 text-center rounded-2xl bg-[#F8FAFC] dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 space-y-3">
+          <div className="p-12 text-center rounded-2xl bg-[#F8FAFC] dark:bg-[#0B1124] border border-slate-200 dark:border-slate-800 space-y-3">
             <p className="text-sm font-medium text-slate-800 dark:text-slate-200">
               No projects match your current filter selection.
             </p>
@@ -130,7 +129,7 @@ export const ProjectsSection: React.FC = () => {
                 setSelectedStatus('All');
                 setSearchQuery('');
               }}
-              className="text-xs font-semibold text-blue-600 dark:text-cyan-400 hover:underline"
+              className="text-xs font-semibold text-blue-600 dark:text-indigo-400 hover:underline"
             >
               Reset project filters
             </button>
@@ -141,12 +140,16 @@ export const ProjectsSection: React.FC = () => {
               const hasValidImage = project.previewImage && !failedImages[project.id];
 
               return (
-                <article
+                <motion.article
                   key={project.id}
-                  className="group bg-[#F8FAFC] dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800/90 hover:border-blue-500/60 dark:hover:border-cyan-400/60 rounded-2xl overflow-hidden flex flex-col justify-between transition-colors"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ duration: 0.45, delay: index * 0.06 }}
+                  className="group bg-[#F8FAFC]/90 dark:bg-[#0B1124]/85 backdrop-blur-md border border-slate-200 dark:border-indigo-500/20 hover:border-blue-500/60 dark:hover:border-violet-400/60 rounded-2xl overflow-hidden flex flex-col justify-between transition-all shadow-sm hover:shadow-xl"
                 >
                   <div>
-                    {/* Visual Preview Header (Generated Architectural Visual or Live Web Frame Preview) */}
+                    {/* Visual Preview Header */}
                     <div
                       onClick={() => setSelectedProjectId(project.id)}
                       className="relative h-52 w-full overflow-hidden bg-slate-900 cursor-pointer border-b border-slate-200 dark:border-slate-800"
@@ -162,32 +165,31 @@ export const ProjectsSection: React.FC = () => {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       ) : (
-                        /* Resilient Technical Blueprint Fallback */
-                        <div className="w-full h-full bg-gradient-to-br from-[#060B16] via-[#0F1E3A] to-[#0B1325] p-6 flex flex-col justify-between">
-                          <div className="flex items-center justify-between text-xs font-mono text-cyan-400/80">
+                        <div className="w-full h-full bg-gradient-to-br from-[#050814] via-[#121C3D] to-[#1D1238] p-6 flex flex-col justify-between">
+                          <div className="flex items-center justify-between text-xs font-mono text-indigo-300">
                             <span>SYS_ARCH // 0{index + 1}</span>
                             <span>{project.status.toUpperCase()}</span>
                           </div>
                           <div className="space-y-1">
-                            <Layers className="w-8 h-8 text-blue-400 mb-2" />
+                            <Layers className="w-8 h-8 text-indigo-400 mb-2" />
                             <p className="font-display text-lg font-bold text-white">
                               {project.title}
                             </p>
-                            <p className="font-mono text-xs text-slate-400">
+                            <p className="font-mono text-xs text-slate-300">
                               {project.highlightMetric || project.category}
                             </p>
                           </div>
                         </div>
                       )}
 
-                      {/* Measured Scrim Overlay at Bottom of Media */}
+                      {/* Scrim Overlay at Bottom of Media */}
                       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent px-6 py-3 flex items-center justify-between text-xs font-mono text-slate-200">
                         <span>{project.category}</span>
-                        <span className="text-cyan-300 font-semibold">{project.status}</span>
+                        <span className="text-indigo-300 font-semibold">{project.status}</span>
                       </div>
                     </div>
 
-                    {/* Card Body (Zero-Pill Unboxed Metadata Discipline) */}
+                    {/* Card Body */}
                     <div className="p-6 sm:p-7 space-y-4">
                       <div className="space-y-1">
                         <div className="flex items-center justify-between gap-2 text-xs font-mono text-slate-500 dark:text-slate-400">
@@ -196,7 +198,7 @@ export const ProjectsSection: React.FC = () => {
                             <span className="tabular-nums">Updated {project.updatedAt}</span>
                           )}
                         </div>
-                        <h3 className="font-display text-xl sm:text-2xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">
+                        <h3 className="font-display text-xl sm:text-2xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-indigo-400 transition-colors">
                           <button
                             type="button"
                             onClick={() => setSelectedProjectId(project.id)}
@@ -216,12 +218,12 @@ export const ProjectsSection: React.FC = () => {
 
                       <div className="space-y-1.5 pt-1">
                         <p className="text-xs font-semibold text-slate-800 dark:text-slate-200">
-                          Key Capabilities:
+                          Key Highlights:
                         </p>
                         <ul className="space-y-1 text-xs text-slate-600 dark:text-slate-400">
                           {project.features.slice(0, 4).map((feat) => (
                             <li key={feat} className="flex items-start gap-2">
-                              <span className="text-blue-600 dark:text-cyan-400 font-mono">·</span>
+                              <span className="text-blue-600 dark:text-indigo-400 font-mono">·</span>
                               <span>{feat}</span>
                             </li>
                           ))}
@@ -230,9 +232,8 @@ export const ProjectsSection: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Card Footer: Unboxed Tech Stack & Direct Action Links */}
-                  <div className="px-6 sm:px-7 py-4 border-t border-slate-200/80 dark:border-slate-800/80 bg-white/60 dark:bg-[#060B16]/50 space-y-3">
-                    {/* Unboxed Tech Stack with Middot Separators */}
+                  {/* Card Footer: Technology Badges & Action Buttons */}
+                  <div className="px-6 sm:px-7 py-4 border-t border-slate-200/80 dark:border-slate-800/80 bg-white/60 dark:bg-[#050814]/60 space-y-3">
                     <div className="text-xs font-mono text-slate-500 dark:text-slate-400 leading-relaxed">
                       {project.technologies.map((tech, i) => (
                         <React.Fragment key={tech}>
@@ -250,19 +251,19 @@ export const ProjectsSection: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setSelectedProjectId(project.id)}
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 dark:text-cyan-400 hover:underline"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 dark:text-indigo-400 hover:underline"
                       >
-                        <span>Inspect Architecture & Details</span>
+                        <span>Inspect Architecture</span>
                         <ArrowUpRight className="w-3.5 h-3.5" />
                       </button>
 
-                      <div className="flex items-center gap-4 text-xs font-medium">
+                      <div className="flex items-center gap-3 text-xs font-medium">
                         {project.githubUrl && (
                           <a
                             href={project.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-[#0B1124] border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:border-blue-500 dark:hover:border-indigo-400 transition-colors"
                           >
                             <Github className="w-3.5 h-3.5" />
                             <span>GitHub</span>
@@ -274,7 +275,7 @@ export const ProjectsSection: React.FC = () => {
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 font-semibold text-emerald-600 dark:text-emerald-400 hover:underline"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-blue-600 to-violet-600 text-white font-semibold hover:from-blue-500 hover:to-violet-500 transition-all shadow-2xs"
                           >
                             <ExternalLink className="w-3.5 h-3.5" />
                             <span>Live Demo</span>
@@ -283,7 +284,7 @@ export const ProjectsSection: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                </article>
+                </motion.article>
               );
             })}
           </div>
