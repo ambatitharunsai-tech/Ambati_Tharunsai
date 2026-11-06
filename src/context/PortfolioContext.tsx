@@ -39,7 +39,7 @@ interface PortfolioContextValue {
   refreshGitHub: () => Promise<void>;
 }
 
-const STORAGE_KEY = 'ambati_tharun_sai_portfolio_v4';
+const STORAGE_KEY = 'ambati_tharun_sai_portfolio_v5';
 const GITHUB_CACHE_KEY = 'ambati_tharun_sai_github_cache_v2';
 const THEME_KEY = 'ambati_tharun_sai_theme_v1';
 
@@ -84,11 +84,17 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
             })
           : DEFAULT_PORTFOLIO_DATA.projects;
 
+        const hydratedCertificates =
+          Array.isArray(parsed.certificates) && parsed.certificates.length > 0
+            ? parsed.certificates
+            : DEFAULT_PORTFOLIO_DATA.certificates;
+
         return {
           ...DEFAULT_PORTFOLIO_DATA,
           ...parsed,
           profile: hydratedProfile,
           projects: hydratedProjects,
+          certificates: hydratedCertificates,
         };
       }
     } catch {

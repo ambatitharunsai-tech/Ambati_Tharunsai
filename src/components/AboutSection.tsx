@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Sliders } from 'lucide-react';
 import { motion } from 'motion/react';
 import { usePortfolio } from '../context/PortfolioContext';
 import { TimelineEntry } from '../types/portfolio';
 import { SubtleSectionGrid } from './ui/interactive-grid-pattern';
 
 export const AboutSection: React.FC = () => {
-  const { data, setStudioOpen } = usePortfolio();
+  const { data } = usePortfolio();
   const [timelineFilter, setTimelineFilter] = useState<string>('All');
 
   const categories: ('All' | TimelineEntry['category'])[] = [
@@ -64,15 +63,6 @@ export const AboutSection: React.FC = () => {
               <span>Location: {data.profile.location}</span>
               <span aria-hidden="true">·</span>
               <span>Focus: Full-Stack & AI/ML Engineering</span>
-              <span aria-hidden="true">·</span>
-              <button
-                type="button"
-                onClick={() => setStudioOpen(true)}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#562f54] text-white font-semibold hover:bg-[#6b3b68] transition-colors"
-              >
-                <Sliders className="w-3.5 h-3.5" />
-                <span>Edit Bio & Timeline</span>
-              </button>
             </div>
           </motion.div>
 

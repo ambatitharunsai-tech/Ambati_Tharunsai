@@ -99,6 +99,8 @@ export type CertificateCategory =
   | 'Workshops'
   | 'Other';
 
+export type CertificateFileFormat = 'PDF' | 'PNG' | 'JPG' | 'SVG' | 'WEBP';
+
 export interface CertificateEntry {
   id: string;
   name: string;
@@ -109,6 +111,11 @@ export interface CertificateEntry {
   relatedSkill: string;
   category: CertificateCategory;
   previewUrl?: string;
+  fileFormat?: CertificateFileFormat;
+  folderPath?: string;
+  fileName?: string;
+  fileSize?: string;
+  description?: string;
 }
 
 export interface EducationProfile {

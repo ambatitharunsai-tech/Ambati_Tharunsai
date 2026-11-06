@@ -1,29 +1,9 @@
-import React, { useRef } from 'react';
-import { Download, Eye, FileText, Printer, Upload, X } from 'lucide-react';
+import React from 'react';
+import { Download, Eye, FileText, Printer, X } from 'lucide-react';
 import { usePortfolio } from '../context/PortfolioContext';
 
 export const ResumeSection: React.FC = () => {
-  const { data, updateData, resumeModalOpen, setResumeModalOpen } = usePortfolio();
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
-
-  const handleResumeUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      const result = typeof reader.result === 'string' ? reader.result : '';
-      updateData((prev) => ({
-        ...prev,
-        profile: {
-          ...prev.profile,
-          resumePdfDataUrl: result,
-          resumeFileName: file.name,
-        },
-      }));
-      setResumeModalOpen(true);
-    };
-    reader.readAsDataURL(file);
-  };
+  const { data, resumeModalOpen, setResumeModalOpen } = usePortfolio();
 
   const handleDownloadResume = () => {
     if (data.profile.resumePdfDataUrl) {
@@ -57,11 +37,6 @@ export const ResumeSection: React.FC = () => {
                 Structured in a clean, recruiter-ready software developer format—synced directly
                 with verified skills, projects, GitHub links, and academic credentials.
               </p>
-              {data.profile.resumePdfDataUrl && (
-                <p className="font-mono text-xs text-[#0D0D0D] dark:text-[#EDECE8] font-semibold">
-                  Uploaded PDF Active: {data.profile.resumeFileName}
-                </p>
-              )}
             </div>
 
             <div className="lg:col-span-5 flex flex-wrap items-center lg:justify-end gap-3">
@@ -81,22 +56,6 @@ export const ResumeSection: React.FC = () => {
               >
                 <Download className="w-4 h-4 text-white" />
                 <span>Download Resume</span>
-              </button>
-
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="application/pdf"
-                onChange={handleResumeUpload}
-                className="hidden"
-              />
-              <button
-                type="button"
-                onClick={() => fileInputRef.current?.click()}
-                className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-lg bg-[#562f54] border border-[#562f54] text-white hover:bg-[#6b3b68] transition-colors"
-              >
-                <Upload className="w-4 h-4 text-white" />
-                <span>Upload PDF</span>
               </button>
             </div>
           </div>

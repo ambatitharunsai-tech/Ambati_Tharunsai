@@ -15,7 +15,6 @@ import { ProjectDetailModal } from './components/ProjectDetailModal';
 import { ProjectsSection } from './components/ProjectsSection';
 import { ResumeSection } from './components/ResumeSection';
 import { SkillsSection } from './components/SkillsSection';
-import { StudioEditorModal } from './components/StudioEditorModal';
 import { PortfolioProvider, usePortfolio } from './context/PortfolioContext';
 
 const VALID_ANCHORS = new Set([
@@ -112,7 +111,6 @@ const PortfolioShell: React.FC = () => {
         <ContactAndFooter />
       </main>
       <ProjectDetailModal />
-      <StudioEditorModal />
     </div>
   );
 };
