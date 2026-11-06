@@ -6,11 +6,37 @@
     --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
+
+    --bg-base: #F8FAFC;
+    --bg-surface: #FFFFFF;
+    --bg-elevated: #F1F5F9;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --border-subtle: rgba(148, 163, 184, 0.28);
+    --accent-blue: #3B82F6;
+    --accent-cyan: #06B6D4;
+    --accent-violet: #8B5CF6;
+  }
+
+  .dark {
+    --bg-base: #050814;
+    --bg-surface: #0B1124;
+    --bg-elevated: #101A30;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --border-subtle: rgba(148, 163, 184, 0.18);
   }
 
   html {
     font-family: var(--font-sans);
     scroll-behavior: smooth;
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, .font-display {
@@ -25,6 +51,15 @@
 
 .tabular-nums {
   font-variant-numeric: tabular-nums;
+}
+
+/* Subtle scrollbar hiding for horizontal tab bars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @media print {

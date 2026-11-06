@@ -11,31 +11,31 @@ export const InnovationSection: React.FC = () => {
   return (
     <section
       id="innovation"
-      className="py-20 sm:py-24 px-6 border-b border-slate-200 dark:border-slate-800/80 bg-[#F8FAFC] dark:bg-[#0B1325]"
+      className="py-20 sm:py-24 border-b border-slate-200/80 dark:border-slate-800/80 bg-[#F8FAFC] dark:bg-[#0B1124]"
     >
-      <div className="max-w-[1360px] mx-auto space-y-12">
+      <div className="max-w-[1260px] mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Header */}
         <div className="space-y-3 max-w-3xl">
-          <p className="font-mono text-xs font-semibold tracking-wider text-blue-600 dark:text-cyan-400">
-            04. INNOVATION & TECHNICAL EXPLORATION
+          <p className="font-mono text-xs font-semibold tracking-wider text-[#3B82F6] dark:text-[#06B6D4]">
+            04. INNOVATION & TECHNICAL ARCHITECTURE
           </p>
           <h2
-            className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white"
+            className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-[#F8FAFC]"
             style={{ textWrap: 'balance' }}
           >
             Applied Research, AI Orchestration & Systems Engineering
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            A structured examination of eight core technical problem spaces I actively explore—detailing
-            the underlying engineering challenge, my implementation approach, technologies utilized,
-            and practical real-world applications.
+          <p className="text-sm sm:text-base text-slate-600 dark:text-[#94A3B8] leading-relaxed">
+            A structured examination of core technical problem spaces—detailing the underlying
+            engineering challenge, architectural approach, technologies utilized, and real-world
+            impact.
           </p>
         </div>
 
-        {/* Interactive Split: 8 Exploration Tracks Selector + Deep Technical Specification */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: 8 Numbered Exploration Tracks */}
-          <div className="lg:col-span-5 divide-y divide-slate-200 dark:divide-slate-800 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#060B16] overflow-hidden">
+        {/* Interactive Split: Exploration Tracks Selector + Technical Dossier */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          {/* Left Column: Numbered Exploration Tracks */}
+          <div className="lg:col-span-5 divide-y divide-slate-200/80 dark:divide-slate-800/80 rounded-xl border border-slate-200/90 dark:border-slate-800/90 bg-white dark:bg-[#050814] overflow-hidden flex flex-col justify-between">
             {data.innovations.map((item) => {
               const isSelected = item.id === activeInnovation?.id;
               return (
@@ -45,19 +45,19 @@ export const InnovationSection: React.FC = () => {
                   onClick={() => setSelectedId(item.id)}
                   className={`w-full text-left px-5 py-4 transition-colors flex items-baseline justify-between gap-4 ${
                     isSelected
-                      ? 'bg-blue-50/90 dark:bg-[#111C33] text-blue-700 dark:text-cyan-300'
-                      : 'hover:bg-slate-50 dark:hover:bg-[#0B1325]/60 text-slate-700 dark:text-slate-300'
+                      ? 'bg-slate-100 dark:bg-[#101A30] text-[#3B82F6] dark:text-[#06B6D4]'
+                      : 'hover:bg-slate-50 dark:hover:bg-[#0B1124] text-slate-700 dark:text-slate-300'
                   }`}
                 >
                   <div className="flex items-baseline gap-3 min-w-0">
-                    <span className="font-mono text-xs font-semibold text-blue-600 dark:text-cyan-400 tabular-nums shrink-0">
+                    <span className="font-mono text-xs font-semibold text-[#3B82F6] dark:text-[#06B6D4] tabular-nums shrink-0">
                       {item.index}.
                     </span>
                     <div className="min-w-0">
-                      <p className="font-display text-sm sm:text-base font-semibold truncate">
+                      <p className="font-display text-sm sm:text-base font-bold truncate">
                         {item.title}
                       </p>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 truncate mt-0.5">
+                      <p className="text-xs text-slate-500 dark:text-[#94A3B8] truncate mt-0.5">
                         {item.domain}
                       </p>
                     </div>
@@ -68,61 +68,70 @@ export const InnovationSection: React.FC = () => {
             })}
           </div>
 
-          {/* Right Column: Detailed Technical Dossier for Selected Track */}
+          {/* Right Column: Detailed Technical Dossier */}
           {activeInnovation && (
-            <div className="lg:col-span-7 bg-white dark:bg-[#060B16] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6">
-              <div className="border-b border-slate-200 dark:border-slate-800 pb-5 space-y-2">
-                <div className="flex items-center gap-2 text-xs font-mono text-blue-600 dark:text-cyan-400">
-                  <span>TRACK {activeInnovation.index}</span>
-                  <span aria-hidden="true">·</span>
-                  <span>{activeInnovation.domain}</span>
+            <div className="lg:col-span-7 bg-white dark:bg-[#050814] border border-slate-200/90 dark:border-slate-800/90 rounded-xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
+              <div className="space-y-6">
+                <div className="border-b border-slate-200/80 dark:border-slate-800/80 pb-5 space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-mono text-[#3B82F6] dark:text-[#06B6D4]">
+                    <span>TRACK {activeInnovation.index}</span>
+                    <span aria-hidden="true">·</span>
+                    <span>{activeInnovation.domain}</span>
+                  </div>
+                  <h3 className="font-display text-xl sm:text-2xl font-bold text-slate-900 dark:text-[#F8FAFC]">
+                    {activeInnovation.title}
+                  </h3>
                 </div>
-                <h3 className="font-display text-2xl font-bold text-slate-900 dark:text-white">
-                  {activeInnovation.title}
-                </h3>
-              </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <h4 className="font-mono text-xs font-semibold text-slate-500 dark:text-slate-400">
-                    THE TECHNICAL PROBLEM
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <h4 className="font-mono text-xs font-semibold text-slate-500 dark:text-[#94A3B8]">
+                      THE TECHNICAL PROBLEM
+                    </h4>
+                    <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                      {activeInnovation.problem}
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <h4 className="font-mono text-xs font-semibold text-slate-500 dark:text-[#94A3B8]">
+                      ENGINEERING APPROACH
+                    </h4>
+                    <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                      {activeInnovation.approach}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Real-World Applications */}
+                <div className="p-5 rounded-lg bg-[#F8FAFC] dark:bg-[#0B1124] border border-slate-200/80 dark:border-slate-800 space-y-2.5">
+                  <h4 className="font-mono text-xs font-semibold text-[#3B82F6] dark:text-[#06B6D4]">
+                    REAL-WORLD APPLICATIONS & IMPACT
                   </h4>
-                  <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                    {activeInnovation.problem}
-                  </p>
+                  <ul className="space-y-1.5 text-xs sm:text-sm text-slate-700 dark:text-slate-200">
+                    {activeInnovation.applications.map((app) => (
+                      <li key={app} className="flex items-start gap-2.5">
+                        <span className="font-mono text-[#3B82F6] dark:text-[#06B6D4]">·</span>
+                        <span>{app}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                <div className="space-y-2">
-                  <h4 className="font-mono text-xs font-semibold text-slate-500 dark:text-slate-400">
-                    MY ENGINEERING APPROACH
-                  </h4>
-                  <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                    {activeInnovation.approach}
-                  </p>
-                </div>
-              </div>
-
-              {/* Potential Real-World Applications */}
-              <div className="p-5 rounded-xl bg-[#F8FAFC] dark:bg-[#0B1325] border border-slate-200 dark:border-slate-800 space-y-3">
-                <h4 className="font-mono text-xs font-semibold text-blue-600 dark:text-cyan-400">
-                  REAL-WORLD APPLICATIONS & IMPACT
-                </h4>
-                <ul className="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-200">
-                  {activeInnovation.applications.map((app) => (
-                    <li key={app} className="flex items-start gap-2.5">
-                      <span className="font-mono text-blue-600 dark:text-cyan-400">·</span>
-                      <span>{app}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
 
               {/* Technologies Used */}
-              <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
-                <span className="text-slate-400">TECHNOLOGIES UTILIZED:</span>
-                <span className="text-slate-800 dark:text-slate-200">
-                  {activeInnovation.technologies.join(' · ')}
-                </span>
+              <div className="pt-4 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+                <span className="text-slate-500 dark:text-[#94A3B8]">TECHNOLOGIES UTILIZED:</span>
+                <div className="flex flex-wrap items-center gap-1.5">
+                  {activeInnovation.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-0.5 rounded bg-slate-100 dark:bg-[#101A30] border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           )}

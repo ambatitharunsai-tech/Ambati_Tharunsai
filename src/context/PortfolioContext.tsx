@@ -1,9 +1,10 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import {
+  BUNDLED_PROJECT_IMAGES,
   DEFAULT_PORTFOLIO_DATA,
   VERIFIED_GITHUB_FALLBACK_REPOS,
 } from '../data/defaultPortfolioData';
-import { GitHubRepoSummary, PortfolioData } from '../types/portfolio';
+import { GitHubRepoSummary, PortfolioData, ProjectItem } from '../types/portfolio';
 
 interface GitHubProfileStats {
   public_repos: number;
@@ -38,7 +39,7 @@ interface PortfolioContextValue {
   refreshGitHub: () => Promise<void>;
 }
 
-const STORAGE_KEY = 'ambati_tharun_sai_portfolio_v2';
+const STORAGE_KEY = 'ambati_tharun_sai_portfolio_v3';
 const GITHUB_CACHE_KEY = 'ambati_tharun_sai_github_cache_v2';
 const THEME_KEY = 'ambati_tharun_sai_theme_v1';
 
@@ -60,10 +61,23 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         if (!hydratedProfile.linkedinUrl) {
           hydratedProfile.linkedinUrl = DEFAULT_PORTFOLIO_DATA.profile.linkedinUrl;
         }
+        const hydratedProjects: ProjectItem[] = Array.isArray(parsed.projects)
+          ? parsed.projects.map((p: ProjectItem) => {
+              if (
+                (!p.previewImage || p.previewImage.startsWith('/src/assets/')) &&
+                BUNDLED_PROJECT_IMAGES[p.id]
+              ) {
+                return { ...p, previewImage: BUNDLED_PROJECT_IMAGES[p.id] };
+              }
+              return p;
+            })
+          : DEFAULT_PORTFOLIO_DATA.projects;
+
         return {
           ...DEFAULT_PORTFOLIO_DATA,
           ...parsed,
           profile: hydratedProfile,
+          projects: hydratedProjects,
         };
       }
     } catch {

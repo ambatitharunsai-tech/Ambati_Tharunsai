@@ -1,4 +1,16 @@
 import { GitHubRepoSummary, PortfolioData } from '../types/portfolio';
+import agrinovaVisual from '../assets/images/agrinova_iot_visual_1793945508612.jpg';
+import curricuforgeVisual from '../assets/images/curricuforge_ai_visual_1793945508544.jpg';
+import edunexusVisual from '../assets/images/edunexus_architecture_visual_1793945504742.jpg';
+import lostphoneVisual from '../assets/images/lostphone_telemetry_visual_1793945506422.jpg';
+
+export const BUNDLED_PROJECT_IMAGES: Record<string, string> = {
+  'edunexus-ai': edunexusVisual,
+  'smart-irrigation-system': agrinovaVisual,
+  curricuforge: curricuforgeVisual,
+  'lost-phone-finder': lostphoneVisual,
+  agrinova: agrinovaVisual,
+};
 
 export const VERIFIED_GITHUB_FALLBACK_REPOS: GitHubRepoSummary[] = [
   {
@@ -311,7 +323,7 @@ export const DEFAULT_PORTFOLIO_DATA: PortfolioData = {
       technologies: ['Python', 'FastAPI', 'React', 'TypeScript', 'Supabase', 'PostgreSQL', 'AI Analytics'],
       githubUrl: 'https://github.com/ambatitharunsai-tech/edunexus-ai',
       secondaryGithubUrl: 'https://github.com/ambatitharunsai-tech/EduNexusAI',
-      previewImage: '/src/assets/images/edunexus_architecture_visual_1793945504742.jpg',
+      previewImage: edunexusVisual,
       updatedAt: '2026-10-24',
       highlightMetric: 'Smart Campus & Student Success Analytics',
       nodeIndex: 0,
@@ -363,7 +375,7 @@ export const DEFAULT_PORTFOLIO_DATA: PortfolioData = {
       ],
       technologies: ['Flutter', 'Dart', 'Supabase', 'PostgreSQL', 'IoT', 'AI Agronomist'],
       githubUrl: 'https://github.com/ambatitharunsai-tech/Ireagation_system',
-      previewImage: '/src/assets/images/agrinova_iot_visual_1793945508612.jpg',
+      previewImage: agrinovaVisual,
       updatedAt: '2026-10-30',
       highlightMetric: 'Smart Agriculture · Flutter + IoT + AI',
       nodeIndex: 2,
@@ -390,7 +402,7 @@ export const DEFAULT_PORTFOLIO_DATA: PortfolioData = {
       technologies: ['Python', 'Flask', 'Generative AI', 'JSON Schema', 'ReportLab PDF', 'Markdown', 'Render'],
       githubUrl: 'https://github.com/ambatitharunsai-tech/-CourseCraft',
       liveUrl: 'https://coursecraft-e1jx.onrender.com/',
-      previewImage: '/src/assets/images/curricuforge_ai_visual_1793945508544.jpg',
+      previewImage: curricuforgeVisual,
       updatedAt: '2026-10-14',
       highlightMetric: 'Live on Render · AI Curriculum + PDF/MD Export',
       nodeIndex: 3,
@@ -440,7 +452,7 @@ export const DEFAULT_PORTFOLIO_DATA: PortfolioData = {
       ],
       technologies: ['Flutter', 'Dart', 'Python', 'Flask', 'REST APIs', 'Google Maps', 'SQLite'],
       githubUrl: 'https://github.com/ambatitharunsai-tech',
-      previewImage: '/src/assets/images/lostphone_telemetry_visual_1793945506422.jpg',
+      previewImage: lostphoneVisual,
       updatedAt: '2026-10-15',
       highlightMetric: 'Flutter + Flask + GPS Telemetry',
       nodeIndex: 5,
