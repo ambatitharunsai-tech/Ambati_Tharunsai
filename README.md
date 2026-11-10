@@ -1,58 +1,81 @@
-# Ambati Tharun Sai — Personal Developer & AI Portfolio
+# Ambati Tharun Sai – Developer Portfolio
 
-A modern, full-stack developer portfolio built for **Ambati Tharun Sai** (Computer Science Engineering Student, Full-Stack Developer & AI Enthusiast from Andhra Pradesh, India).
+A full-stack personal portfolio that presents projects, technical interests and contact information. The interface is built with React, TypeScript, Vite and Tailwind CSS, with an Express server for backend endpoints.
 
-- **GitHub**: [https://github.com/ambatitharunsai-tech](https://github.com/ambatitharunsai-tech)
-- **LinkedIn**: [https://www.linkedin.com/in/tharun-sai-ambati-452249428/](https://www.linkedin.com/in/tharun-sai-ambati-452249428/)
-- **Email**: `ambatitharunsai@gmail.com`
+**Portfolio repository:** https://github.com/ambatitharunsai-tech/Ambati_Tharunsai  
+**GitHub profile:** https://github.com/ambatitharunsai-tech  
+**LinkedIn:** https://www.linkedin.com/in/tharun-sai-ambati-452249428/
 
----
+## Highlights
 
-## Featured Projects & Live Websites
+- Responsive portfolio interface and project showcase
+- Project and technology sections
+- GitHub repository integration for displaying public project information
+- Contact form backed by an Express API
+- Contact submission validation and receipt IDs
+- Health endpoint for deployment checks
+- Certificate assets organized under `public/certificates/`
 
-1. **EduNexus AI** — Smart Campus Analytics, student success analytics, academic & placement risk indicators, and student journey tracking ([GitHub](https://github.com/ambatitharunsai-tech/edunexus-ai) | [Live Demo](https://edunexus-ai-web.onrender.com/))
-2. **Safe Drinking Water Web** — Water awareness platform with hydration tracker, safety checklist, and community alerts ([GitHub](https://github.com/ambatitharunsai-tech/safe-water-web) | [Live Demo](https://safe-water-web.onrender.com/))
-3. **CourseCraft AI** — AI-powered learning curriculum generator with personalized learning paths and PDF/Markdown exports ([GitHub](https://github.com/ambatitharunsai-tech/-CourseCraft) | [Live Demo](https://coursecraft-e1jx.onrender.com/))
-4. **Ireagation System** — Smart agriculture application with IoT-based irrigation, crop management, weather integration, and AI agronomist ([GitHub](https://github.com/ambatitharunsai-tech/Ireagation_system))
-5. **Hema AI** — NLP-based intelligent assistant featuring semantic search, intent classification, and document analysis ([GitHub](https://github.com/ambatitharunsai-tech/mini_llm))
+## Technology
 
----
+- React 19 and TypeScript
+- Vite 8
+- Tailwind CSS v4
+- Motion and Lucide icons
+- Three.js
+- Node.js and Express
+- TypeScript runtime via `tsx`
 
-## Tech Stack
+## Run locally
 
-- **Frontend**: React 19, TypeScript, Vite, Tailwind CSS v4, Framer Motion (`motion`), Lucide Icons, shadcn/ui `InteractiveGridPattern`
-- **Backend**: Node.js, Express (`server.ts` with `POST /api/contact` & `GET /api/health`)
-- **Live Integrations**: GitHub REST API v3 (`/users/ambatitharunsai-tech/repos`), Client-Side Studio Editor with JSON Import/Export
-
----
-
-## Local Development
+Requirements: a recent Node.js version and npm.
 
 ```bash
-# 1. Install dependencies
+git clone https://github.com/ambatitharunsai-tech/Ambati_Tharunsai.git
+cd Ambati_Tharunsai
 npm install
-
-# 2. Start the full-stack development server on http://localhost:3000
 npm run dev
+```
 
-# 3. Verify TypeScript types & production build
+Open the local URL printed by Vite/Express in the terminal.
+
+## Available scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the development server |
+| `npm run build` | Build the frontend assets with Vite |
+| `npm run lint` | Run the TypeScript type check |
+| `npm run start` | Start the production server |
+| `npm run preview` | Preview the built frontend |
+
+Before publishing, run:
+
+```bash
 npm run lint
 npm run build
 ```
 
----
+## Backend endpoints
 
-## Deploying to Render
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/health` | Returns a service health response |
+| `POST` | `/api/contact` | Validates and records a contact submission |
 
-This repository is pre-configured for **Render** deployment (either as a Full-Stack Node Web Service or via the included `render.yaml` Blueprint):
+Contact submissions are written to the server's local `data/contact-submissions.json` file by the current server implementation. On hosts with ephemeral filesystems this storage may not survive redeploys or restarts; configure persistent storage or a database before relying on it for production inquiries.
 
-1. Push this repository to GitHub (`https://github.com/ambatitharunsai-tech/...`).
-2. In the [Render Dashboard](https://dashboard.render.com/), click **New +** → **Web Service** and connect your GitHub repository.
-3. Configure the service settings:
-   - **Runtime**: `Node`
-   - **Build Command**: `npm install && npm run build`
-   - **Start Command**: `npm run start`
-4. Optional Environment Variables:
-   - `NODE_ENV` = `production`
-   - `CONTACT_WEBHOOK_URL` = *(optional webhook URL to forward contact form submissions)*
-5. Click **Create Web Service**.
+## Deploy to Render
+
+The repository includes a `render.yaml` deployment configuration. It can also be deployed as a Node web service using the repository's scripts:
+
+- **Build command:** `npm install && npm run build`
+- **Start command:** `npm run start`
+- **Environment:** `NODE_ENV=production`
+- **Port:** Render supplies `PORT`
+
+Do not commit private environment values or contact-submission data.
+
+## Certificates
+
+See [public/certificates/README.md](public/certificates/README.md) for the directory's certificate organization.
